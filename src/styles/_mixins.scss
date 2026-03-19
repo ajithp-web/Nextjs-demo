@@ -1,14 +1,32 @@
 @use "variables" as *;
 
+@use "sass:color";
+
 // MIXINS
 
 // ── Responsive breakpoints ───────────────────────────────
 @mixin respond-to($bp) {
-  @if $bp == xl    { @media (max-width: $bp-xl)  { @content; } }
-  @else if $bp == lg { @media (max-width: $bp-lg)  { @content; } }
-  @else if $bp == md { @media (max-width: $bp-md)  { @content; } }
-  @else if $bp == sm { @media (max-width: $bp-sm)  { @content; } }
-  @else if $bp == xs { @media (max-width: $bp-xs)  { @content; } }
+  @if $bp == xl {
+    @media (max-width: $bp-xl) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (max-width: $bp-lg) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (max-width: $bp-md) {
+      @content;
+    }
+  } @else if $bp == sm {
+    @media (max-width: $bp-sm) {
+      @content;
+    }
+  } @else if $bp == xs {
+    @media (max-width: $bp-xs) {
+      @content;
+    }
+  }
 }
 
 // ── Section container ────────────────────────────────────
@@ -84,7 +102,9 @@
 @mixin flex-col($gap: 0) {
   display: flex;
   flex-direction: column;
-  @if $gap > 0 { gap: $gap; }
+  @if $gap > 0 {
+    gap: $gap;
+  }
 }
 
 // ── Button base ──────────────────────────────────────────
@@ -98,14 +118,18 @@
   font-weight: $fw-semibold;
   font-size: $fz;
   cursor: pointer;
-  transition: background $transition-fast, color $transition-fast;
+  transition:
+    background $transition-fast,
+    color $transition-fast;
 }
 
 @mixin btn-dark {
   @include btn-base;
   background: $color-black;
   color: $color-white;
-  &:hover { background: #1a1a1a; }
+  &:hover {
+    background: #1a1a1a;
+  }
 }
 
 @mixin btn-light {
@@ -113,7 +137,9 @@
   background: $color-white;
   color: $color-black;
   border: 2px solid $color-black;
-  &:hover { background: darken($color-white, 5%); }
+  &:hover {
+    background: color.adjust($color-white, $lightness: -5%);
+  }
 }
 
 // ── Triangle corner accent ───────────────────────────────
@@ -141,7 +167,9 @@
 @mixin hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 // ── Section header (centered) ────────────────────────────
