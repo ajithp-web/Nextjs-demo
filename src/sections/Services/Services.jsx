@@ -5,7 +5,7 @@ import "./services.scss";
 const services = [
   {
     id: 1,
-    icon: "/services-icon1.png",
+    icon: "/ser1.svg",
     title: "Fintech platform development",
     description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
     link: "#",

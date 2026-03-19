@@ -39,6 +39,46 @@
   @include section-container;
   @include flex-col($space-10);
   align-items: center;
+  position: relative; // IMPORTANT
+  overflow: hidden;   // hide overflow for fade
+}
+
+// LEFT FADE
+.e-image-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+
+  background: linear-gradient(
+    to right,
+    $color-bg-white 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+// RIGHT FADE
+.e-image-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+
+  background: linear-gradient(
+    to left,
+    $color-bg-white 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 // ── Logo row ─────────────────────────────────────────────

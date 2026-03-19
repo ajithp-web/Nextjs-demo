@@ -45,7 +45,7 @@
 
 .heroGridOverlay {
   position: absolute;
-  inset: 290px 0 0 0;
+  inset: 240px 0 0 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -54,17 +54,55 @@
     content: "";
     position: absolute;
     inset: 0 0 15% 0;
+
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cline x1='90' y1='80' x2='90' y2='100' stroke='rgba(255,255,255,0.18)' stroke-width='1'/%3E%3Cline x1='80' y1='90' x2='100' y2='90' stroke='rgba(255,255,255,0.18)' stroke-width='1'/%3E%3C/svg%3E");
+    background-size:
+      45px 45px,
+      45px 45px,
+      180px 180px;
+
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+
+    background-repeat: repeat, repeat, repeat;
+
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 18%,
+        black 85%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+      );
     -webkit-mask-composite: destination-in;
+
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 18%,
+        black 85%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+      );
     mask-composite: intersect;
   }
 
@@ -75,12 +113,22 @@
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-size: 45px 45px;
     background-position: 0 -1px;
-    -webkit-mask-image:
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-    mask-image:
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
   }
 }
 
@@ -259,18 +307,46 @@
   transform: rotate(360deg);
 }
 
-.bulb { left: 8.8%; bottom: 240px; }
-.window { left: 24.7%; bottom: 230px; }
-.react { left: 34%; bottom: 220px; }
-.python { left: 34%; bottom: 122px; }
-.android { right: 42%; bottom: 220px; }
-.mysql { right: 42%; bottom: 122px; }
-.vscode { right: 24.7%; bottom: 230px; }
-.rocket { right: 16%; bottom: 310px; }
+.bulb {
+  left: 8.8%;
+  bottom: 240px;
+}
+.window {
+  left: 24.7%;
+  bottom: 230px;
+}
+.react {
+  left: 34%;
+  bottom: 220px;
+}
+.python {
+  left: 34%;
+  bottom: 122px;
+}
+.android {
+  right: 42%;
+  bottom: 220px;
+}
+.mysql {
+  right: 42%;
+  bottom: 122px;
+}
+.vscode {
+  right: 24.7%;
+  bottom: 230px;
+}
+.rocket {
+  right: 16%;
+  bottom: 310px;
+}
 
 .connectorLine {
   position: absolute;
-  background: linear-gradient(90deg, rgba(104, 33, 33, 0.15), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    90deg,
+    rgba(104, 33, 33, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
   height: 1px;
   z-index: -1;
 }
@@ -280,7 +356,11 @@
   height: 62px;
   left: 248px;
   top: 173px;
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transform: rotate(-35deg);
 }
 
@@ -289,7 +369,11 @@
   height: 63px;
   left: 1079px;
   top: 80px;
-  background: linear-gradient(to top right, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    to top right,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transform: rotate(28deg);
 }
 
@@ -373,53 +457,164 @@
 
 /* ── Responsive ────────────────────────────────────────── */
 @include respond-to(xl) {
-  .breadcrumbs { margin-left: 60px; }
-  .heroVisual { height: 420px; }
+  .breadcrumbs {
+    margin-left: 60px;
+  }
+  .heroVisual {
+    height: 420px;
+  }
 }
 
 @include respond-to(lg) {
-  .heroInner { padding-bottom: 8vh; }
-  .breadcrumbs { margin-left: 40px; margin-top: $space-6; }
-  .heroVisual { height: 380px; }
-  .phoneWrapper { width: 240px; }
-  .iphone13Pro { width: 240px; }
-  .screen { width: 216px; height: 350px; }
-  .notch { width: 95px; }
+  .heroInner {
+    padding-bottom: 8vh;
+  }
+  .breadcrumbs {
+    margin-left: 40px;
+    margin-top: $space-6;
+  }
+  .heroVisual {
+    height: 380px;
+  }
+  .phoneWrapper {
+    width: 240px;
+  }
+  .iphone13Pro {
+    width: 240px;
+  }
+  .screen {
+    width: 216px;
+    height: 350px;
+  }
+  .notch {
+    width: 95px;
+  }
   .floatingIcon {
-    &.python, &.android, &.mysql, &.react, &.rocket, &.bulb { width: 56px; height: 56px; }
-    &.window, &.vscode { width: 110px; height: 90px; }
+    &.python,
+    &.android,
+    &.mysql,
+    &.react,
+    &.rocket,
+    &.bulb {
+      width: 56px;
+      height: 56px;
+    }
+    &.window,
+    &.vscode {
+      width: 110px;
+      height: 90px;
+    }
   }
 }
 
 @include respond-to(md) {
-  .hero { min-height: auto; }
-  .heroInner { padding-bottom: $space-12; }
-  .breadcrumbs { margin-left: 20px; margin-top: $space-5; }
-  .heroContent { padding: $space-12 $space-4 0; }
-  .heroVisual { height: 320px; margin-top: $space-10; }
-  .phoneWrapper { width: 200px; }
-  .iphone13Pro { width: 200px; }
-  .screen { width: 180px; height: 300px; top: 14px; left: 10px; }
-  .notch { width: 80px; top: 26px; }
-  .iconGroupLeft, .iconGroupRight, .connectorImg { display: none; }
-  .floatingIcon.react, .floatingIcon.python, .floatingIcon.android, .floatingIcon.mysql { width: 44px; height: 44px; }
-  .react { left: 20%; bottom: 140px; }
-  .python { left: 20%; bottom: 80px; }
-  .android { right: 20%; bottom: 140px; }
-  .mysql { right: 20%; bottom: 80px; }
+  .hero {
+    min-height: auto;
+  }
+  .heroInner {
+    padding-bottom: $space-12;
+  }
+  .breadcrumbs {
+    margin-left: 20px;
+    margin-top: $space-5;
+  }
+  .heroContent {
+    padding: $space-12 $space-4 0;
+  }
+  .heroVisual {
+    height: 320px;
+    margin-top: $space-10;
+  }
+  .phoneWrapper {
+    width: 200px;
+  }
+  .iphone13Pro {
+    width: 200px;
+  }
+  .screen {
+    width: 180px;
+    height: 300px;
+    top: 14px;
+    left: 10px;
+  }
+  .notch {
+    width: 80px;
+    top: 26px;
+  }
+  .iconGroupLeft,
+  .iconGroupRight,
+  .connectorImg {
+    display: none;
+  }
+  .floatingIcon.react,
+  .floatingIcon.python,
+  .floatingIcon.android,
+  .floatingIcon.mysql {
+    width: 44px;
+    height: 44px;
+  }
+  .react {
+    left: 20%;
+    bottom: 140px;
+  }
+  .python {
+    left: 20%;
+    bottom: 80px;
+  }
+  .android {
+    right: 20%;
+    bottom: 140px;
+  }
+  .mysql {
+    right: 20%;
+    bottom: 80px;
+  }
 }
 
 @include respond-to(sm) {
-  .heroInner { padding-bottom: $space-10; }
-  .breadcrumbs { margin-left: 16px; font-size: 12px; }
-  .heroContent { padding: $space-10 $space-3 0; }
-  .heroHeading { font-size: 22px; line-height: 30px; }
-  .heroDesc { font-size: 13px; line-height: 22px; }
-  .heroBtn { width: 110px; height: 42px; font-size: 14px; }
-  .heroVisual { height: 280px; }
-  .phoneWrapper { width: 170px; left: 50%; transform: translateX(-50%); bottom: 18px; }
-  .iphone13Pro { width: 170px; }
-  .screen { width: 152px; max-height: 240px; }
-  .notch { width: 70px; }
-  .floatingIcon { display: none; }
+  .heroInner {
+    padding-bottom: $space-10;
+  }
+  .breadcrumbs {
+    margin-left: 16px;
+    font-size: 12px;
+  }
+  .heroContent {
+    padding: $space-10 $space-3 0;
+  }
+  .heroHeading {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .heroDesc {
+    font-size: 13px;
+    line-height: 22px;
+  }
+  .heroBtn {
+    width: 110px;
+    height: 42px;
+    font-size: 14px;
+  }
+  .heroVisual {
+    height: 280px;
+  }
+  .phoneWrapper {
+    width: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+  }
+  .iphone13Pro {
+    width: 170px;
+  }
+  .screen {
+    width: 152px;
+    max-height: 240px;
+  }
+  .notch {
+    width: 70px;
+  }
+  .floatingIcon {
+    display: none;
+  }
 }

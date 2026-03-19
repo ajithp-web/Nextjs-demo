@@ -2,20 +2,20 @@ import React from "react";
 import styles from "./technologies.scss";
 
 const ROW1 = [
-  { src: "/tec1.png", alt: "Flutter" },
-  { src: "/tec2.svg", alt: "Python" },
-  { src: "/tec3.svg", alt: "MongoDB" },
-  { src: "/tec4.svg", alt: "Node.js" },
+  { src: "/tec10.png", alt: "Next.js" },   
+  { src: "/flutter.png", alt: "Flutter" },
+  { src: "/tec8.svg", alt: "Python" },
+  { src: "/tec7.svg", alt: "MongoDB" },
+  { src: "/tec6.svg", alt: "Node.js" },
   { src: "/tec5.svg", alt: "Google Cloud" },
-  { src: "/tec6.svg", alt: "PostgreSQL" },
 ];
 
 const ROW2 = [
-  { src: "/tec7.svg", alt: "MySQL" },
-  { src: "/tec8.svg", alt: "React" },
-  { src: "/tec9.svg", alt: "Android" },
-  { src: "/tec10.png", alt: "AWS" },
-  { src: "/tec11.png", alt: "Technology" },
+  { src: "/tec4.svg", alt: "PostgreSQL" },
+  { src: "/tec3.svg", alt: "MySQL" },
+  { src: "/tec2.svg", alt: "React" },
+  { src: "/android.svg", alt: "Android" },
+  { src: "/aws-2.svg", alt: "AWS" },
 ];
 
 export default function Technologies() {

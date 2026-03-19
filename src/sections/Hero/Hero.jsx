@@ -8,55 +8,60 @@ const Hero = () => {
   const scrollRef = useRef(null);
   const lastImgRef = useRef(null);
 
-useEffect(() => {
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
 
-    // Scroll content translation
-    if (scrollRef.current) {
-      const screenEl = scrollRef.current.closest(".screen");
-      if (screenEl) {
-        const screenHeight = screenEl.clientHeight;
-        let maxTranslate = 0;
+      // Scroll content translation
+      if (scrollRef.current) {
+        const screenEl = scrollRef.current.closest(".screen");
+        if (screenEl) {
+          const screenHeight = screenEl.clientHeight;
+          let maxTranslate = 0;
 
-        if (lastImgRef.current) {
-          const { top } = scrollRef.current.getBoundingClientRect();
-          const { bottom } = lastImgRef.current.getBoundingClientRect();
-          maxTranslate = Math.max(0, bottom - top - screenHeight);
+          if (lastImgRef.current) {
+            const { top } = scrollRef.current.getBoundingClientRect();
+            const { bottom } = lastImgRef.current.getBoundingClientRect();
+            maxTranslate = Math.max(0, bottom - top - screenHeight);
+          }
+
+          const multiplier =
+            window.innerWidth <= 480
+              ? 0.8
+              : window.innerWidth <= 768
+                ? 0.6
+                : 0.4;
+          const translateY = Math.min(scrollY * multiplier, maxTranslate);
+          scrollRef.current.style.transform = `translateY(-${translateY}px)`;
         }
-
-        const multiplier = window.innerWidth <= 480 ? 0.8 : window.innerWidth <= 768 ? 0.6 : 0.4;
-        const translateY = Math.min(scrollY * multiplier, maxTranslate);
-        scrollRef.current.style.transform = `translateY(-${translateY}px)`;
       }
-    }
 
-    // Floating icons translation
-    const moveAmount = Math.min(scrollY * 0.1, 30);
+      // Floating icons translation
+      const moveAmount = Math.min(scrollY * 0.1, 30);
 
-    const moves = [
-      [".iconGroupLeft", `-${moveAmount}px`, "X"],
-      [".iconGroupRight", `${moveAmount}px`, "X"],
-      [".floatingIcon.react", `-${moveAmount}px`, "X"],
-      [".floatingIcon.python", `-${moveAmount}px`, "X"],
-      [".floatingIcon.android", `${moveAmount}px`, "X"],
-      [".floatingIcon.mysql", `${moveAmount}px`, "X"],
-    ];
+      const moves = [
+        [".iconGroupLeft", `-${moveAmount}px`, "X"],
+        [".iconGroupRight", `${moveAmount}px`, "X"],
+        [".floatingIcon.react", `-${moveAmount}px`, "X"],
+        [".floatingIcon.python", `-${moveAmount}px`, "X"],
+        [".floatingIcon.android", `${moveAmount}px`, "X"],
+        [".floatingIcon.mysql", `${moveAmount}px`, "X"],
+      ];
 
-    moves.forEach(([selector, value]) => {
-      const el = document.querySelector(selector);
-      if (el) el.style.transform = `translateX(${value})`;
-    });
-  };
+      moves.forEach(([selector, value]) => {
+        const el = document.querySelector(selector);
+        if (el) el.style.transform = `translateX(${value})`;
+      });
+    };
 
-  const timeout = setTimeout(handleScroll, 200);
-  window.addEventListener("scroll", handleScroll, { passive: true });
+    const timeout = setTimeout(handleScroll, 200);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-    clearTimeout(timeout);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <section className="hero">
