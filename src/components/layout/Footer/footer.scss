@@ -1,0 +1,272 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+// ── Footer wrapper ────────────────────────────────────────
+.e-footer {
+  width: 100%;
+  background-color: $color-bg-black;
+  @include flex-col;
+}
+
+// ── Top section ───────────────────────────────────────────
+.e-footer-top {
+  width: 100%;
+  max-width: $max-width-content;              
+  margin: 0 auto;
+  padding: $space-16 $padding-inline $space-12; 
+  display: flex;
+  align-items: flex-start;
+  gap: $space-12;                               
+}
+
+// ── Brand column ──────────────────────────────────────────
+.e-footer-brand {
+  flex: 0 0 260px;                         
+  @include flex-col($space-7);                  
+}
+
+.e-footer-logo {
+  display: inline-block;
+}
+
+.e-footer-address {
+  font-family: $font-primary;                   
+  font-style: normal;
+  font-weight: $fw-regular;
+  font-size: $fs-sm;                          
+  line-height: $lh-tight;
+  color: $color-text-muted;
+}
+
+.e-footer-contact {
+  @include flex-col($space-1);                 
+
+  p {
+    font-family: $font-primary;
+    font-weight: $fw-regular;
+    font-size: $fs-sm;
+    line-height: $lh-tight;
+    margin: 0;
+    color: $color-text-muted;
+  }
+}
+
+.e-contact-label {
+  color: $color-yellow;
+  font-weight: $fw-medium;
+}
+
+.e-contact-link {
+  color: $color-text-muted;
+  text-decoration: none;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+    text-decoration: underline;
+  }
+}
+
+// ── Socials ───────────────────────────────────────────────
+.e-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: $space-5;                          
+}
+
+.e-social-icon {
+  color: $color-text-muted;
+  @include flex-center;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+// ── Generic nav column ────────────────────────────────────
+.e-footer-col {
+  flex: 1;
+  @include flex-col($space-8);                  
+}
+
+.e-footer-col-heading {
+  font-family: $font-primary;                   
+  font-weight: $fw-semibold;
+  font-size: $fs-lg;                            
+  line-height: $lh-normal;                    
+  color: $color-white;
+  margin: 0;
+}
+
+.e-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include flex-col($space-5);                  
+}
+
+.e-footer-link {
+  font-family: $font-primary;                  
+  font-weight: $fw-regular;
+  font-size: $fs-base;                         
+  line-height: $lh-tight;
+  color: $color-text-muted;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+// ── Site Navigation — two sub-columns ─────────────────────
+.e-footer-nav-cols {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-12;                             
+}
+
+// ── Bottom bar ────────────────────────────────────────────
+.e-footer-bottom {
+  width: 100%;
+  border-top: 1px solid $color-border-dark;    
+  @include flex-between;
+  padding: $space-6 $padding-inline;           
+  max-width: 100%;
+}
+
+.e-footer-copy {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-xs;                            
+  line-height: 20px;
+  color: $color-text-secondary;                 
+  margin: 0;
+}
+
+.e-footer-legal {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.e-footer-legal-dot {
+  color: $color-text-secondary;
+  font-size: $fs-sm;
+  line-height: 1;
+}
+
+.e-footer-legal-link {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-xs;                            
+  line-height: 20px;
+  color: $color-text-secondary;                 
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────
+@include respond-to(xl) {
+  .e-footer-top {
+    padding: $space-12 $space-6 $space-10;
+    gap: $space-8;
+  }
+
+  .e-footer-bottom {
+    padding: $space-5 $space-6;
+  }
+}
+
+@include respond-to(lg) {
+  .e-footer-top {
+    flex-wrap: wrap;
+    gap: $space-10;
+  }
+
+  .e-footer-brand {
+    flex: 1 1 100%;
+  }
+
+  .e-footer-col {
+    flex: 1 1 calc(50% - #{$space-5});
+  }
+
+  .e-footer-nav-cols {
+    gap: $space-8;
+  }
+}
+
+@include respond-to(md) {
+  .e-footer-top {
+    flex-direction: column;
+    gap: $space-10;
+    padding: $space-12 $space-5 $space-8;
+  }
+
+  .e-footer-brand {
+    flex: 1 1 100%;
+  }
+
+  .e-footer-col {
+    width: 100%;
+    gap: $space-6;
+  }
+
+  .e-footer-nav-cols {
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  .e-footer-links {
+    gap: $space-4;
+  }
+
+  .e-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-5 $space-5;
+  }
+}
+
+@include respond-to(sm) {
+  .e-footer-top {
+    padding: $space-10 $space-4 $space-8;
+    gap: $space-8;
+  }
+
+  .e-footer-brand {
+    gap: $space-5;
+  }
+
+  .e-footer-address,
+  .e-footer-contact p {
+    font-size: $fs-xs;
+    line-height: 20px;
+  }
+
+  .e-footer-col-heading {
+    font-size: $fs-md;
+  }
+
+  .e-footer-link {
+    font-size: $fs-sm;
+  }
+
+  .e-footer-bottom {
+    padding: $space-4 $space-4;
+  }
+
+  .e-footer-copy,
+  .e-footer-legal-link {
+    font-size: 11px;
+  }
+}

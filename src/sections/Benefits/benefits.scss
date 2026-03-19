@@ -1,0 +1,80 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.e-benefits {
+  @include section-block($space-20, $space-20, $space-12);
+  background: $color-bg-black;
+}
+
+.e-b-header {
+  @include section-container;
+  @include section-header($space-6);
+}
+
+.e-b-heading {
+  @include heading-xl;
+  color: #f9fafd;
+}
+
+.e-b-para {
+  @include body-text($color-text-light);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.e-card-container {
+  @include section-container;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+}
+
+.e-card {
+  width: 100%;
+  padding: $space-6;
+  @include flex-col($space-5);
+  // border: 1px solid $color-border-dark;
+  border-radius: $radius-lg;
+}
+
+.e-card-title {
+  @include heading-lg;
+  color: #f9fafd;
+}
+
+.e-card-para {
+  @include body-sm($color-text-light);
+}
+
+@include respond-to(lg) {
+  .e-card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include respond-to(md) {
+  .e-benefits {
+    padding-block: $space-16;
+    gap: $space-9;
+  }
+
+  .e-card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .e-b-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+
+  .e-b-para {
+    font-size: $fs-md;
+  }
+}
+
+@include respond-to(sm) {
+  .e-b-heading {
+    font-size: $fs-2xl;
+    line-height: $lh-normal;
+  }
+}

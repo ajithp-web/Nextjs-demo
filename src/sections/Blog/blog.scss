@@ -1,0 +1,130 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.e-blog {
+  width: 100%;
+  background-color: $color-bg-white;
+  padding-block: $space-20;
+}
+
+.e-blog-inner {
+  @include section-container;
+  @include flex-col($space-8);
+}
+
+.e-blog-heading {
+  @include heading-xl;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.e-blog-container {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-8;
+  width: 100%;
+}
+
+.e-blog-card {
+  flex: 1;
+  @include flex-col($space-4);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover .e-blog-img   { transform: scale(1.03); }
+  &:hover .e-blog-title { color: $color-blue; }
+}
+
+.e-blog-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+  background-color: $color-bg-muted;
+}
+
+.e-blog-corner {
+  @include corner-triangle(40px, $color-yellow);
+}
+
+.e-blog-img {
+  object-fit: cover;
+  transition: transform $transition-slow;
+}
+
+.e-blog-meta {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  width: 100%;
+}
+
+.e-blog-time,
+.e-blog-category {
+  @include label-text;
+}
+
+.e-blog-time {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.e-blog-dot {
+  font-size: $fs-xs;
+  color: $color-text-muted;
+  line-height: 1;
+}
+
+.e-blog-arrow {
+  margin-left: auto;
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+.e-blog-title {
+  font-family: $font-primary;
+  font-weight: $fw-medium;
+  font-size: $fs-lg;
+  line-height: $lh-normal;
+  letter-spacing: -0.01em;
+  color: $color-text-primary;
+  margin: 0;
+  transition: color $transition-fast;
+}
+
+@include respond-to(lg) {
+  .e-blog-container {
+    gap: $space-6;
+  }
+}
+
+@include respond-to(md) {
+  .e-blog {
+    padding-block: $space-16;
+  }
+
+  .e-blog-container {
+    flex-direction: column;
+  }
+
+  .e-blog-card {
+    width: 100%;
+  }
+
+  .e-blog-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+}
+
+@include respond-to(sm) {
+  .e-blog {
+    padding-block: $space-12;
+  }
+
+  .e-blog-heading {
+    font-size: $fs-2xl;
+    line-height: $lh-normal;
+  }
+}

@@ -1,0 +1,425 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background: url("/hero-card.png") center/cover no-repeat;
+    z-index: 0;
+  }
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 11vh;
+}
+
+.heroVisual {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  margin-top: auto;
+  margin-bottom: 0;
+  transform: translateY(0);
+}
+
+.heroGridOverlay {
+  position: absolute;
+  inset: 290px 0 0 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 15% 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-composite: destination-in;
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 85% 0 0 0;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: 0 -1px;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+}
+
+.phoneWrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 280px;
+  z-index: 10;
+  line-height: 0;
+
+  .phoneImage {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.iphone13Pro {
+  position: relative;
+  width: 280px;
+  margin: 0 auto;
+}
+
+.phoneBodyFrame {
+  width: 100%;
+  display: block;
+}
+
+.screen {
+  position: absolute;
+  top: 18px;
+  left: 14px;
+  width: 252px;
+  height: 404px;
+  background: #000;
+  border-radius: 38px 38px 0 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.screen::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollContent {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.screenImg,
+.screenImgSecond {
+  width: 100%;
+  display: block;
+}
+
+.screenImgClip {
+  overflow: hidden;
+  line-height: 0;
+}
+
+.screenImgSecond {
+  transform: translateY(-65%);
+  margin-bottom: -65%;
+}
+
+.extraScrollSpace {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+.notch {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.iconGroupLeft,
+.iconGroupRight {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+
+  .floatingIcon,
+  .connectorImg {
+    pointer-events: auto;
+  }
+}
+
+.floatingIcon {
+  position: absolute;
+  z-index: 5;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+
+  .iconGroupLeft &,
+  .iconGroupRight & {
+    transition: none;
+    will-change: unset;
+  }
+
+  .iconBox {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    padding: 12px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &.python,
+  &.android,
+  &.mysql,
+  &.react,
+  &.rocket,
+  &.bulb {
+    width: 70px;
+    height: 70px;
+  }
+
+  &.window,
+  &.vscode {
+    width: 140px;
+    height: 110px;
+
+    .iconBox {
+      padding: 0;
+    }
+  }
+}
+
+.connectorImg {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.bulbToWindow {
+  left: 17.1%;
+  bottom: 220px;
+  width: 110px;
+  transform: rotate(-180deg);
+}
+
+.vscodeToRocket {
+  right: 17%;
+  bottom: 260px;
+  width: 110px;
+  transform: rotate(360deg);
+}
+
+.bulb { left: 9%; bottom: 240px; }
+.window { left: 25%; bottom: 230px; }
+.react { left: 34%; bottom: 220px; }
+.python { left: 34%; bottom: 122px; }
+.android { right: 42%; bottom: 220px; }
+.mysql { right: 42%; bottom: 122px; }
+.vscode { right: 25%; bottom: 230px; }
+.rocket { right: 16%; bottom: 310px; }
+
+.connectorLine {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(104, 33, 33, 0.15), rgba(255, 255, 255, 0.05));
+  height: 1px;
+  z-index: -1;
+}
+
+.to-window {
+  width: 118px;
+  height: 62px;
+  left: 248px;
+  top: 173px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(-35deg);
+}
+
+.from-vscode {
+  width: 130px;
+  height: 63px;
+  left: 1079px;
+  top: 80px;
+  background: linear-gradient(to top right, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(28deg);
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  margin-top: $space-9;
+  margin-left: 120px;
+  font-family: $font-primary;
+  font-size: $fs-md;
+  z-index: 1;
+}
+
+.breadcrumbLink {
+  color: $color-text-white-60;
+  text-decoration: none;
+
+  &:hover {
+    color: rgba($color-white, 0.9);
+  }
+}
+
+.breadcrumbSeparator {
+  color: rgba($color-white, 0.4);
+}
+
+.breadcrumbCurrent {
+  color: $color-white;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+  z-index: 1;
+  width: 100%;
+  flex: 1;
+  justify-content: center;
+}
+
+.heroHeading {
+  font-weight: $fw-semibold;
+  font-size: $fs-6xl;
+  line-height: 72px;
+  letter-spacing: -0.02em;
+  color: rgba($color-white, 0.5);
+  margin-bottom: $space-4;
+}
+
+.heroHeadingGradient {
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    linear-gradient(89.46deg, #76cafb 2.5%, #8792bf 36.82%, #d786b0 74.86%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDesc {
+  font-size: $fs-xl;
+  line-height: $lh-relaxed;
+  color: $color-text-white-70;
+  margin-bottom: $space-8;
+}
+
+.heroBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 138px;
+  height: 48px;
+  border: 1px solid $color-text-white-85;
+  background: #c8c8c8;
+  color: $color-black;
+  font-size: $fs-lg;
+  font-weight: $fw-semibold;
+  cursor: pointer;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@include respond-to(xl) {
+  .breadcrumbs { margin-left: 60px; }
+  .heroVisual { height: 420px; }
+}
+
+@include respond-to(lg) {
+  .heroInner { padding-bottom: 8vh; }
+  .breadcrumbs { margin-left: 40px; margin-top: $space-6; }
+  .heroVisual { height: 380px; }
+  .phoneWrapper { width: 240px; }
+  .iphone13Pro { width: 240px; }
+  .screen { width: 216px; height: 350px; }
+  .notch { width: 95px; }
+  .floatingIcon {
+    &.python, &.android, &.mysql, &.react, &.rocket, &.bulb { width: 56px; height: 56px; }
+    &.window, &.vscode { width: 110px; height: 90px; }
+  }
+}
+
+@include respond-to(md) {
+  .hero { min-height: auto; }
+  .heroInner { padding-bottom: $space-12; }
+  .breadcrumbs { margin-left: 20px; margin-top: $space-5; }
+  .heroContent { padding: $space-12 $space-4 0; }
+  .heroVisual { height: 320px; margin-top: $space-10; }
+  .phoneWrapper { width: 200px; }
+  .iphone13Pro { width: 200px; }
+  .screen { width: 180px; height: 300px; top: 14px; left: 10px; }
+  .notch { width: 80px; top: 26px; }
+  .iconGroupLeft, .iconGroupRight, .connectorImg { display: none; }
+  .floatingIcon.react, .floatingIcon.python, .floatingIcon.android, .floatingIcon.mysql { width: 44px; height: 44px; }
+  .react { left: 20%; bottom: 140px; }
+  .python { left: 20%; bottom: 80px; }
+  .android { right: 20%; bottom: 140px; }
+  .mysql { right: 20%; bottom: 80px; }
+}
+
+@include respond-to(sm) {
+  .heroInner { padding-bottom: $space-10; }
+  .breadcrumbs { margin-left: 16px; font-size: 12px; }
+  .heroContent { padding: $space-10 $space-3 0; }
+  .heroHeading { font-size: 22px; line-height: 30px; }
+  .heroDesc { font-size: 13px; line-height: 22px; }
+  .heroBtn { width: 110px; height: 42px; font-size: 14px; }
+  .heroVisual { height: 280px; }
+  .phoneWrapper { width: 170px; left: 50%; transform: translateX(-50%); bottom: 18px; }
+  .iphone13Pro { width: 170px; }
+  .screen { width: 152px; max-height: 240px; }
+  .notch { width: 70px; }
+  .floatingIcon { display: none; }
+}

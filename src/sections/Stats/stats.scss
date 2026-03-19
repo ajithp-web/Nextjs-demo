@@ -1,0 +1,167 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ── Section ───────────────────────────────────────────────
+.e-stats {
+  width: 100%;
+  padding-block: $space-20;
+  padding-inline: $padding-inline;
+  @include flex-col($space-12);
+  align-items: center;
+  background-color: $color-bg-black;
+}
+
+// ── Header block ─────────────────────────────────────────
+.e-stats-head {
+  @include section-header($space-6);
+  max-width: $max-width-content;
+  width: 100%;
+}
+
+// ── Icon pill ─────────────────────────────────────────────
+.e-stats-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-full;
+  background-color: #1a1a1a;
+  border: 1.5px solid $color-border-dark2;
+  @include flex-center;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.e-stats-heading {
+  font-family: $font-primary;
+  font-weight: $fw-semibold;
+  font-size: $fs-5xl;
+  line-height: 54px;
+  letter-spacing: -0.02em;
+  color: $color-white;
+  margin: 0;
+}
+
+.e-stats-para {
+  @include body-text($color-text-muted);
+  margin: 0;
+  max-width: 600px;
+}
+
+// ── Metrics row ───────────────────────────────────────────
+.e-stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 960px;
+}
+
+.e-stats-info {
+  flex: 1;
+  @include flex-col($space-3);
+  align-items: center;
+  padding: 0 $space-10;
+  text-align: center;
+}
+
+.e-stats-info-heading {
+  font-family: $font-primary;
+  font-weight: $fw-bold;
+  font-size: $fs-7xl;
+  line-height: 80px;
+  letter-spacing: -0.03em;
+  color: $color-white;
+  margin: 0;
+}
+
+.e-stats-info-para {
+  @include body-text($color-text-muted);
+  font-size: $fs-md;
+  line-height: $lh-normal;
+  margin: 0;
+  max-width: 180px;
+}
+
+.e-stats-divider {
+  width: 1px;
+  height: 80px;
+  background-color: $color-border-dark2;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+// ── CTA button ────────────────────────────────────────────
+.e-stats-button {
+  @include btn-light;
+  width: 160px;
+  height: 48px;
+  font-size: $fs-md;
+  border-radius: $radius-sm;
+
+  &:hover {
+    background: $color-white;
+    color: $color-black;
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────
+@include respond-to(lg) {
+  .e-stats-info {
+    padding: 0 $space-8;
+  }
+
+  .e-stats-info-heading {
+    font-size: 52px;
+    line-height: 60px;
+  }
+}
+
+@include respond-to(md) {
+  .e-stats {
+    padding-block: $space-16;
+    gap: $space-9;
+  }
+
+  .e-stats-container {
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  .e-stats-divider {
+    width: 60px;
+    height: 1px;
+  }
+
+  .e-stats-info {
+    padding: $space-2 0;
+  }
+
+  .e-stats-info-heading {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .e-stats-heading {
+    font-size: $fs-4xl;
+    line-height: 44px;
+  }
+
+  .e-stats-para {
+    font-size: $fs-md;
+  }
+}
+
+@include respond-to(sm) {
+  .e-stats-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+
+  .e-stats-info-heading {
+    font-size: $fs-6xl;
+    line-height: 64px;
+  }
+}

@@ -1,0 +1,155 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.e-projects {
+  width: 100%;
+  background-color: $color-bg-white;
+  padding-block: $space-20;
+}
+
+.e-projects-inner {
+  @include section-container;
+  @include flex-col($space-8);
+}
+
+.e-pro-header {
+  @include flex-col($space-4);
+}
+
+.e-pro-heading {
+  @include heading-xl;
+  color: $color-black;
+  margin: 0;
+}
+
+.e-pro-para {
+  @include body-text($color-text-secondary);
+  margin: 0;
+  max-width: 760px;
+}
+
+.e-pro-container {
+  display: flex;
+  align-items: stretch;
+  gap: $space-6;
+  width: 100%;
+}
+
+.e-projects .e-card {
+  flex: 1;
+  min-height: 420px;
+  @include flex-col;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    @include grid-overlay(0.04, 28px);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.card-purple { background: linear-gradient(160deg, #6b3fa0 0%, #7b52d3 60%, #5c35b0 100%); }
+.card-violet { background: linear-gradient(160deg, #7c3aed 0%, #9d4fe8 50%, #7c2fd4 100%); }
+.card-blue   { background: linear-gradient(160deg, #1d3fd8 0%, #2563eb 60%, #1e40af 100%); }
+
+.e-card-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 210px;
+  @include flex-center;
+  align-items: flex-end;
+  padding-top: $space-4;
+}
+
+.e-projects .e-img {
+  width: 184px !important;
+  height: 182px !important;
+  object-fit: contain;
+  position: relative;
+  filter: drop-shadow(0px 8px 24px rgba($color-black, 0.35));
+}
+
+.e-card-content {
+  position: relative;
+  z-index: 1;
+  @include flex-col($space-3);
+  align-items: flex-start;
+  padding: $space-5 $space-5 $space-6;
+  flex: 1;
+}
+
+.e-pro-tag {
+  font-family: $font-primary;
+  font-weight: $fw-medium;
+  font-size: $fs-sm;
+  line-height: $lh-tight;
+  color: $color-yellow;
+}
+
+.e-pro-title {
+  font-family: $font-primary;
+  font-weight: $fw-medium;
+  font-size: $fs-lg;
+  line-height: $lh-normal;
+  color: $color-white;
+  margin: 0;
+}
+
+.e-pro-button {
+  @include btn-base(40px, $fs-sm);
+  width: 148px;
+  border: 2px solid rgba($color-white, 0.9);
+  background: $color-white;
+  color: $color-black;
+  font-weight: $fw-semibold;
+  gap: $space-2;
+  margin-top: auto;
+
+  &:hover {
+    background: rgba($color-white, 0.15);
+    color: $color-white;
+  }
+}
+
+@include respond-to(lg) {
+  .e-pro-container {
+    flex-wrap: wrap;
+  }
+
+  .e-projects .e-card {
+    flex: 1 1 calc(50% - #{$space-3});
+  }
+}
+
+@include respond-to(md) {
+  .e-projects {
+    padding-block: $space-16;
+  }
+
+  .e-pro-container {
+    flex-direction: column;
+  }
+
+  .e-projects .e-card {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .e-pro-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+}
+
+@include respond-to(sm) {
+  .e-pro-heading {
+    font-size: $fs-2xl;
+    line-height: $lh-normal;
+  }
+}

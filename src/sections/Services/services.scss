@@ -1,0 +1,148 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.e-services {
+  width: 100%;
+  padding-block: $space-20;
+  background-color: $color-bg-white;
+}
+
+.e-services-inner {
+  @include section-container;
+  @include flex-col($space-8);
+}
+
+.e-services-heading {
+  @include heading-xl;
+  color: $color-black;
+  margin: 0;
+}
+
+.e-services-container {
+  display: flex;
+  align-items: stretch;
+  gap: $space-6;
+  width: 100%;
+}
+
+.e-service-card {
+  flex: 1;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $color-border-dark;
+  background: radial-gradient(ellipse at 60% 0%, #2a2a2a 0%, #1a1a1a 40%, $color-bg-dark 100%);
+  transition: transform $transition-normal;
+
+  &:hover {
+    transform: translateY(-3px);
+
+    .e-card-bg {
+      opacity: 0.7;
+    }
+  }
+}
+
+.e-card-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  transition: opacity $transition-normal;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba($color-white, 0.55) 0.5px, transparent 0.5px),
+    radial-gradient(circle, rgba($color-white, 0.3)  0.5px, transparent 0.5px),
+    radial-gradient(circle, rgba($color-white, 0.2)  0.5px, transparent 0.5px);
+  background-size: 60px 60px, 90px 90px, 120px 120px;
+  background-position: 0 0, 30px 30px, 15px 15px;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
+  mask-image:         linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.e-card-inner {
+  position: relative;
+  z-index: 1;
+  @include flex-col($space-4);
+  align-items: flex-start;
+  padding: $space-8 $space-7 $space-8;
+  height: 100%;
+}
+
+.e-card-icon {
+  img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+}
+
+.e-card-title {
+  font-family: $font-primary;
+  font-weight: $fw-semibold;
+  font-size: $fs-xl;
+  line-height: $lh-normal;
+  letter-spacing: -0.01em;
+  color: $color-white;
+  margin: 0;
+}
+
+.e-card-para {
+  @include body-sm($color-text-muted);
+  margin: 0;
+}
+
+.e-card-link {
+  font-family: $font-primary;
+  font-weight: $fw-medium;
+  font-size: $fs-sm;
+  line-height: $lh-tight;
+  color: $color-white;
+  text-decoration: none;
+  margin-top: auto;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-bottom-color: $color-white;
+  }
+}
+
+@include respond-to(lg) {
+  .e-services-container {
+    flex-wrap: wrap;
+  }
+
+  .e-service-card {
+    flex: 1 1 calc(50% - #{$space-3});
+    min-width: 260px;
+  }
+}
+
+@include respond-to(md) {
+  .e-services {
+    padding-block: $space-16;
+  }
+
+  .e-services-container {
+    flex-direction: column;
+  }
+
+  .e-service-card {
+    flex: unset;
+    width: 100%;
+  }
+
+  .e-services-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+}
+
+@include respond-to(sm) {
+  .e-services-heading {
+    font-size: $fs-2xl;
+    line-height: $lh-normal;
+  }
+}

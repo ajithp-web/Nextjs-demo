@@ -1,0 +1,113 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.e-faq {
+  @include section-container;
+  @include section-block($space-20, $space-20, $space-12);
+  align-items: center;
+  background-color: $color-bg-white;
+}
+
+.e-faq-header {
+  @include section-header($space-4);
+}
+
+.e-faq-heading {
+  @include heading-xl;
+  color: $color-black;
+  margin: 0;
+}
+
+.e-faq-para {
+  @include body-text($color-text-secondary);
+  margin: 0;
+}
+
+.e-faq-list {
+  width: 100%;
+  max-width: $max-width-narrow;
+  @include flex-col;
+}
+
+.e-faq-item {
+  @include flex-col;
+  width: 100%;
+}
+
+.e-faq-question {
+  width: 100%;
+  @include flex-between;
+  gap: $space-4;
+  padding: $space-7 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+
+  span:first-child {
+    font-family: $font-primary;
+    font-weight: $fw-regular;
+    font-size: $fs-lg;
+    line-height: $lh-normal;
+    color: $color-text-dark;
+    flex: 1;
+  }
+}
+
+.e-faq-icon {
+  flex-shrink: 0;
+  @include flex-center;
+  width: 28px;
+  height: 28px;
+}
+
+.is-open .e-faq-question span:first-child {
+  color: $color-text-dark;
+  font-weight: $fw-medium;
+}
+
+.e-faq-answer {
+  @include body-sm($color-text-secondary);
+  font-size: $fs-md;
+  line-height: $lh-relaxed;
+  margin: 0 0 $space-6 0;
+  max-width: 720px;
+}
+
+.e-faq-divider {
+  width: 100%;
+  height: 1px;
+  background-color: $color-border-light;
+  flex-shrink: 0;
+}
+
+@include respond-to(md) {
+  .e-faq {
+    padding-block: $space-16;
+    gap: $space-9;
+  }
+
+  .e-faq-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+
+  .e-faq-para {
+    font-size: $fs-md;
+  }
+
+  .e-faq-question {
+    padding: $space-6 0;
+
+    span:first-child {
+      font-size: $fs-md;
+    }
+  }
+}
+
+@include respond-to(sm) {
+  .e-faq-heading {
+    font-size: $fs-2xl;
+    line-height: $lh-normal;
+  }
+}

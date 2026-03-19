@@ -1,0 +1,94 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.e-sec-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: $color-bg-white;
+  padding: $space-4 0;
+  border-top: 1px solid rgba($color-black, 0.1);
+  border-bottom: 1px solid rgba($color-black, 0.08);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba($color-white, 0), $color-white);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.e-navbar-links {
+  @include section-container(1030px, 0);
+  overflow-x: auto;
+  overflow-y: visible;
+  @include hide-scrollbar;
+}
+
+.e-navbar-links-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-9;
+  min-width: 100%;
+  padding-bottom: $space-4;
+
+  a {
+    font-family: $font-primary;
+    font-weight: $fw-regular;
+    font-size: $fs-md;
+    line-height: $lh-tight;
+    color: rgba($color-black, 0.45);
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: rgba($color-black, 0.75);
+    }
+  }
+
+  a.is-brand {
+    font-weight: $fw-medium;
+    color: $color-black;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  a.is-active {
+    color: $color-black;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -#{$space-4};
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $color-yellow;
+    }
+  }
+}
+
+@include respond-to(lg) {
+  .e-navbar-links {
+    padding-inline: $space-5;
+    gap: $space-8;
+  }
+}
+
+@include respond-to(md) {
+  .e-navbar-links {
+    padding-inline: $space-4;
+    gap: $space-6;
+
+    a {
+      font-size: $fs-sm;
+    }
+  }
+}

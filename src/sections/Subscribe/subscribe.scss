@@ -1,0 +1,148 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ── Section ───────────────────────────────────────────────
+.e-subscribe {
+  width: 100%;
+  padding-block: $space-20;
+  padding-inline: $padding-inline;
+  @include flex-center;
+  position: relative;
+  overflow: hidden;
+  background-color: $color-bg-white;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 180, 120, 0.15);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 15%;
+    right: 8%;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 180, 120, 0.15);
+    clip-path: polygon(100% 100%, 0 100%, 100% 0);
+    z-index: 1;
+  }
+}
+
+// ── Inner content ─────────────────────────────────────────
+.e-subscribe-inner {
+  width: 100%;
+  max-width: $max-width-xs;
+  @include flex-col($space-6);
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+// ── Heading ───────────────────────────────────────────────
+.e-subscribe-heading {
+  @include heading-xl;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+// ── Subtext ───────────────────────────────────────────────
+.e-subscribe-para {
+  @include body-text($color-text-secondary);
+  margin: 0;
+}
+
+// ── Form row ──────────────────────────────────────────────
+.e-subscribe-form {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 520px;
+  height: 48px;
+  margin-top: $space-2;
+}
+
+// ── Email input ───────────────────────────────────────────
+.e-subscribe-input {
+  flex: 1;
+  height: 100%;
+  padding: 0 $space-4;
+  font-family: $font-primary;
+  font-size: $fs-sm;
+  color: $color-text-primary;
+  background-color: $color-bg-white;
+  border: 1px solid $color-border-muted;
+  border-right: none;
+  outline: none;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    border-color: $color-text-primary;
+  }
+}
+
+// ── Subscribe button ──────────────────────────────────────
+.e-subscribe-button {
+  @include btn-dark;
+  flex-shrink: 0;
+  width: 120px;
+  height: 48px;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  border-radius: 0;
+}
+
+// ── Responsive ───────────────────────────────────────────
+@include respond-to(md) {
+  .e-subscribe {
+    padding-block: $space-16;
+  }
+
+  .e-subscribe-heading {
+    font-size: $fs-3xl;
+    line-height: $lh-loose;
+  }
+
+  .e-subscribe-form {
+    flex-direction: column;
+    height: auto;
+    gap: $space-3;
+  }
+
+  .e-subscribe-input {
+    height: 48px;
+    border-right: 1px solid $color-border-muted;
+    border-bottom: none;
+  }
+
+  .e-subscribe-button {
+    width: 100%;
+    height: 48px;
+  }
+}
+
+@include respond-to(sm) {
+  .e-subscribe {
+    padding-block: $space-12;
+  }
+
+  .e-subscribe-heading {
+    font-size: $fs-2xl;
+    line-height: $lh-normal;
+  }
+}

@@ -1,0 +1,152 @@
+@use "variables" as *;
+
+// MIXINS
+
+// ── Responsive breakpoints ───────────────────────────────
+@mixin respond-to($bp) {
+  @if $bp == xl    { @media (max-width: $bp-xl)  { @content; } }
+  @else if $bp == lg { @media (max-width: $bp-lg)  { @content; } }
+  @else if $bp == md { @media (max-width: $bp-md)  { @content; } }
+  @else if $bp == sm { @media (max-width: $bp-sm)  { @content; } }
+  @else if $bp == xs { @media (max-width: $bp-xs)  { @content; } }
+}
+
+// ── Section container ────────────────────────────────────
+@mixin section-container($max: $max-width-content, $pad: $padding-inline) {
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $pad;
+}
+
+// ── Section block ────────────────────────────────────────
+@mixin section-block($pt: $space-20, $pb: $space-20, $gap: $space-12) {
+  width: 100%;
+  padding-top: $pt;
+  padding-bottom: $pb;
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+// ── Typography: heading styles ───────────────────────────
+@mixin heading-xl {
+  font-family: $font-primary;
+  font-weight: $fw-semibold;
+  font-size: $fs-3xl;
+  line-height: $lh-loose;
+  letter-spacing: -0.02em;
+}
+
+@mixin heading-lg {
+  font-family: $font-primary;
+  font-weight: $fw-semibold;
+  font-size: $fs-xl;
+  line-height: $lh-normal;
+}
+
+@mixin body-text($color: $color-text-secondary) {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-lg;
+  line-height: $lh-relaxed;
+  color: $color;
+}
+
+@mixin body-sm($color: $color-text-muted) {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-md;
+  line-height: $lh-tight;
+  color: $color;
+}
+
+@mixin label-text {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-xs;
+  line-height: 20px;
+  color: $color-text-muted;
+}
+
+// ── Flex helpers ─────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  @if $gap > 0 { gap: $gap; }
+}
+
+// ── Button base ──────────────────────────────────────────
+@mixin btn-base($h: 48px, $fz: $fs-md) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $h;
+  border: none;
+  font-family: $font-primary;
+  font-weight: $fw-semibold;
+  font-size: $fz;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast;
+}
+
+@mixin btn-dark {
+  @include btn-base;
+  background: $color-black;
+  color: $color-white;
+  &:hover { background: #1a1a1a; }
+}
+
+@mixin btn-light {
+  @include btn-base;
+  background: $color-white;
+  color: $color-black;
+  border: 2px solid $color-black;
+  &:hover { background: darken($color-white, 5%); }
+}
+
+// ── Triangle corner accent ───────────────────────────────
+@mixin corner-triangle($size: 40px, $color: $color-yellow) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: $size $size 0 0;
+  border-color: $color transparent transparent transparent;
+  z-index: 2;
+}
+
+// ── Grid overlay (subtle lines) ──────────────────────────
+@mixin grid-overlay($alpha: 0.07, $size: 64px) {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, $alpha) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, $alpha) 1px, transparent 1px);
+  background-size: $size $size;
+}
+
+// ── Hide scrollbar ───────────────────────────────────────
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+// ── Section header (centered) ────────────────────────────
+@mixin section-header($gap: $space-4) {
+  @include flex-col($gap);
+  align-items: center;
+  text-align: center;
+}
