@@ -16,6 +16,8 @@ import Subscribe from "@/sections/Subscribe/Subscribe";
 import Technologies from "@/sections/Technologies/Technologies";
 
 export default function Home() {
+
+  
   return (
     <>
       <div>

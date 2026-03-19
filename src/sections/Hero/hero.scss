@@ -706,3 +706,34 @@
   .vscode { right: 22%; }
   .rocket { right: 15%; }
 }
+@include respond-to(tab-lg) {
+  .heroHeading {
+    font-size: 42px;
+    line-height: 52px;
+  }
+
+  .heroVisual {
+    height: 360px;
+  }
+
+  .phoneWrapper {
+    width: 220px;
+  }
+
+  .screen {
+    width: 196px;
+    height: 320px;
+  }
+
+  /* reduce spread */
+  .iconGroupLeft,
+  .iconGroupRight {
+    transform: scale(0.8);
+    opacity: 0.75;
+  }
+
+  .react { left: 32%; }
+  .python { left: 32%; }
+  .android { right: 32%; }
+  .mysql { right: 32%; }
+}

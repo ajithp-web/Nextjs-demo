@@ -131,8 +131,46 @@
 }
 
 @include respond-to(sm) {
-  .e-image-row {
+  .e-image-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: $space-6;
-    justify-content: flex-start;
+  }
+
+  .e-image-row {
+    display: contents; 
+  }
+
+  .e-logo-item {
+    justify-self: center;
+  }
+
+  .e-logo-item:nth-child(n + 5) {
+    grid-column: span 1;
+  }
+
+  .e-logo-item:nth-child(n + 5):nth-child(-n + 7) {
+    grid-column: span 1;
+  }
+
+  // Center 3 items rows
+  .e-logo-item:nth-child(5) {
+    grid-column: 2;
+  }
+  .e-logo-item:nth-child(6) {
+    grid-column: 3;
+  }
+  .e-logo-item:nth-child(7) {
+    grid-column: 4;
+  }
+
+  .e-logo-item:nth-child(8) {
+    grid-column: 2;
+  }
+  .e-logo-item:nth-child(9) {
+    grid-column: 3;
+  }
+  .e-logo-item:nth-child(10) {
+    grid-column: 4;
   }
 }
