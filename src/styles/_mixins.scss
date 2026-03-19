@@ -27,6 +27,11 @@
       @content;
     }
   }
+  @else if $bp == ipad {
+    @media (max-width: 1100px) and (min-width: 769px) {
+      @content;
+    }
+  }
 }
 
 // ── Section container ────────────────────────────────────

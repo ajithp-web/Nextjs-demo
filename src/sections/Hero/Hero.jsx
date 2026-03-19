@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import "./hero.scss";
-import Sticky_nav from "../../components/layout/StickyNav/StickyNav";
 
 const Hero = () => {
   const scrollRef = useRef(null);

@@ -18,11 +18,12 @@
   &::before {
     content: "";
     position: absolute;
-    top: 20%;
-    left: 8%;
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 180, 120, 0.15);
+    top: 50%;
+    left: 22%;
+    rotate: 180deg;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 253, 120, 0.15);
     clip-path: polygon(0 0, 100% 0, 0 100%);
     z-index: 1;
   }
@@ -30,11 +31,11 @@
   &::after {
     content: "";
     position: absolute;
-    bottom: 15%;
-    right: 8%;
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 180, 120, 0.15);
+    bottom: 25%;
+    right: 28%;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 253, 120, 0.15);
     clip-path: polygon(100% 100%, 0 100%, 100% 0);
     z-index: 1;
   }

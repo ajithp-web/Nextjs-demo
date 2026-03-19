@@ -270,3 +270,35 @@
     font-size: 11px;
   }
 }
+
+@include respond-to(ipad) {
+  .e-footer-top {
+    gap: $space-10;
+    padding: $space-14 $space-8 $space-10;
+  }
+
+  .e-footer-brand {
+    flex: 1 1 100%;
+    max-width: 420px;
+  }
+
+  .e-footer-col {
+    flex: 1 1 calc(50% - #{$space-6});
+  }
+
+  .e-footer-nav-cols {
+    gap: $space-6;
+  }
+
+  .e-footer-col-heading {
+    font-size: $fs-md;
+  }
+
+  .e-footer-link {
+    font-size: $fs-sm;
+  }
+
+  .e-footer-bottom {
+    padding: $space-5 $space-8;
+  }
+}

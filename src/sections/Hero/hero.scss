@@ -618,3 +618,91 @@
     display: none;
   }
 }
+
+
+@include respond-to(ipad) {
+  .hero {
+  min-height: 51vh;
+
+}
+  .heroInner {
+    padding-bottom: 6vh;
+  }
+
+  .heroContent {
+    padding: 40px 20px 0;
+  }
+
+  .heroHeading {
+    font-size: 42px;
+    line-height: 52px;
+  }
+
+  .heroDesc {
+    font-size: 16px;
+  }
+
+  .heroVisual {
+    height: 360px;
+    margin-top: 40px;
+  }
+
+  /* PHONE */
+  .phoneWrapper {
+    width: 220px;
+    bottom: 0;
+  }
+
+  .iphone13Pro {
+    width: 220px;
+  }
+
+  .screen {
+    width: 196px;
+    height: 320px;
+  }
+
+  .notch {
+    width: 90px;
+  }
+
+  .iconGroupLeft,
+  .iconGroupRight {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+
+  .floatingIcon {
+    &.react,
+    &.python,
+    &.android,
+    &.mysql {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .bulbToWindow {
+  left: 15%;
+  bottom: 220px;
+  width: 70px;
+  transform: rotate(-180deg);
+}
+
+.vscodeToRocket {
+  right: 15%;
+  bottom: 260px;
+  width: 70px;
+  transform: rotate(360deg);
+}
+
+  .react { left: 29%; bottom: 180px; }
+  .python { left: 29%; bottom: 110px; }
+  .android { right: 43%; bottom: 180px; }
+  .mysql { right: 43%; bottom: 110px; }
+
+  .bulb { left: 3%; }
+  .window { left: 22%; }
+  .vscode { right: 22%; }
+  .rocket { right: 15%; }
+}
