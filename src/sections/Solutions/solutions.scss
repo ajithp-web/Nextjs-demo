@@ -57,6 +57,7 @@
   position: relative;
   transition: transform $transition-normal;
   border: 1px solid $color-border-light;
+  border-radius: 0px;
 
   &:hover {
     transform: translateY(-4px);
@@ -71,12 +72,13 @@
     @include heading-lg;
     color: $color-text-dark;
     margin: 0;
-    
+    font-size: $fs-md;
   }
 
   &__desc {
     @include body-sm($color-text-secondary);
     margin: 0;
+    color: $color-black;
   }
 
   &__link {

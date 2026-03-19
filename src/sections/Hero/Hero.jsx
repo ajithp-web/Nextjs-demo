@@ -5,67 +5,58 @@ import "./hero.scss";
 import Sticky_nav from "../../components/layout/StickyNav/StickyNav";
 
 const Hero = () => {
-  // In your JSX, add a ref to track the last image
   const scrollRef = useRef(null);
   const lastImgRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
+useEffect(() => {
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
 
-      if (scrollRef.current) {
-        const screenEl = scrollRef.current.closest(".screen");
-        if (!screenEl) return;
-
+    // Scroll content translation
+    if (scrollRef.current) {
+      const screenEl = scrollRef.current.closest(".screen");
+      if (screenEl) {
         const screenHeight = screenEl.clientHeight;
-
         let maxTranslate = 0;
+
         if (lastImgRef.current) {
-          const scrollContentTop =
-            scrollRef.current.getBoundingClientRect().top;
-          const lastImgBottom =
-            lastImgRef.current.getBoundingClientRect().bottom;
-          maxTranslate = Math.max(
-            0,
-            lastImgBottom - scrollContentTop - screenHeight,
-          );
+          const { top } = scrollRef.current.getBoundingClientRect();
+          const { bottom } = lastImgRef.current.getBoundingClientRect();
+          maxTranslate = Math.max(0, bottom - top - screenHeight);
         }
 
-        const multiplier =
-          window.innerWidth <= 480 ? 0.8 : window.innerWidth <= 768 ? 0.6 : 0.4;
-
+        const multiplier = window.innerWidth <= 480 ? 0.8 : window.innerWidth <= 768 ? 0.6 : 0.4;
         const translateY = Math.min(scrollY * multiplier, maxTranslate);
         scrollRef.current.style.transform = `translateY(-${translateY}px)`;
       }
+    }
 
-      const moveAmount = Math.min(scrollY * 0.1, 30);
+    // Floating icons translation
+    const moveAmount = Math.min(scrollY * 0.1, 30);
 
-      const leftGroup = document.querySelector(".iconGroupLeft");
-      if (leftGroup) leftGroup.style.transform = `translateX(-${moveAmount}px)`;
+    const moves = [
+      [".iconGroupLeft", `-${moveAmount}px`, "X"],
+      [".iconGroupRight", `${moveAmount}px`, "X"],
+      [".floatingIcon.react", `-${moveAmount}px`, "X"],
+      [".floatingIcon.python", `-${moveAmount}px`, "X"],
+      [".floatingIcon.android", `${moveAmount}px`, "X"],
+      [".floatingIcon.mysql", `${moveAmount}px`, "X"],
+    ];
 
-      const rightGroup = document.querySelector(".iconGroupRight");
-      if (rightGroup)
-        rightGroup.style.transform = `translateX(${moveAmount}px)`;
+    moves.forEach(([selector, value]) => {
+      const el = document.querySelector(selector);
+      if (el) el.style.transform = `translateX(${value})`;
+    });
+  };
 
-      const react = document.querySelector(".floatingIcon.react");
-      const python = document.querySelector(".floatingIcon.python");
-      if (react) react.style.transform = `translateX(-${moveAmount}px)`;
-      if (python) python.style.transform = `translateX(-${moveAmount}px)`;
+  const timeout = setTimeout(handleScroll, 200);
+  window.addEventListener("scroll", handleScroll, { passive: true });
 
-      const android = document.querySelector(".floatingIcon.android");
-      const mysql = document.querySelector(".floatingIcon.mysql");
-      if (android) android.style.transform = `translateX(${moveAmount}px)`;
-      if (mysql) mysql.style.transform = `translateX(${moveAmount}px)`;
-    };
-
-    const timeout = setTimeout(handleScroll, 200);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeout);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+    clearTimeout(timeout);
+  };
+}, []);
 
   return (
     <section className="hero">
