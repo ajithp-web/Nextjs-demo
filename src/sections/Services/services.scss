@@ -1,9 +1,11 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+//  Services
+
 .e-services {
   width: 100%;
-  padding-block: $space-20;
+  @include section-padding-responsive;
   background-color: $color-bg-white;
 }
 
@@ -14,10 +16,12 @@
 
 .e-services-heading {
   @include heading-xl;
+  @include heading-xl-responsive;
   color: $color-black;
   margin: 0;
 }
 
+// ── Cards row ────────────────────────────────────────────
 .e-services-container {
   display: flex;
   align-items: stretch;
@@ -27,19 +31,39 @@
 
 .e-service-card {
   flex: 1;
-  min-height: 300px;
   position: relative;
   overflow: hidden;
   border: 1px solid $color-border-dark;
   background: radial-gradient(ellipse at 60% 0%, #2a2a2a 0%, #1a1a1a 40%, $color-bg-dark 100%);
   transition: transform $transition-normal;
 
-  &:hover {
-    transform: translateY(-3px);
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 120%;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at center bottom,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.25) 35%,
+      rgba(255, 255, 255, 0.08) 60%,
+      transparent 80%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-normal;
+    z-index: 0;
+  }
 
-    .e-card-bg {
-      opacity: 0.7;
-    }
+  &:hover::after { opacity: 1; }
+
+  &:hover .e-card-link {
+    border-bottom-color: #f5c518;
+    color: $color-white;
   }
 }
 
@@ -54,10 +78,10 @@
     radial-gradient(circle, rgba($color-white, 0.55) 0.5px, transparent 0.5px),
     radial-gradient(circle, rgba($color-white, 0.3)  0.5px, transparent 0.5px),
     radial-gradient(circle, rgba($color-white, 0.2)  0.5px, transparent 0.5px);
-  background-size: 60px 60px, 90px 90px, 120px 120px;
-  background-position: 0 0, 30px 30px, 15px 15px;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
-  mask-image:         linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0) 100%);
+  background-size: 3.75rem 3.75rem, 5.625rem 5.625rem, 7.5rem 7.5rem; // 60/90/120px
+  background-position: 0 0, 1.875rem 1.875rem, 0.9375rem 0.9375rem;    // 30/15px
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+  mask-image:         linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
 }
 
 .e-card-inner {
@@ -65,16 +89,14 @@
   z-index: 1;
   @include flex-col($space-4);
   align-items: flex-start;
-  padding: $space-8 $space-7 $space-8;
+  padding: $space-8 $space-7;
   height: 100%;
 }
 
-.e-card-icon {
-  img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-  }
+.e-card-icon img {
+  width: 3rem;   
+  height: 3rem;
+  object-fit: contain;
 }
 
 .e-card-title {
@@ -104,45 +126,21 @@
   border-bottom: 1px solid transparent;
   transition: border-color $transition-fast, color $transition-fast;
 
-  &:hover {
-    border-bottom-color: $color-white;
-  }
+  &:hover { border-bottom-color: $color-white; }
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
-  .e-services-container {
-    flex-wrap: wrap;
-  }
+  .e-services-container { flex-wrap: wrap; }
 
   .e-service-card {
     flex: 1 1 calc(50% - #{$space-3});
-    min-width: 260px;
+    min-width: 16.25rem;
   }
 }
 
 @include respond-to(md) {
-  .e-services {
-    padding-block: $space-16;
-  }
+  .e-services-container { flex-direction: column; }
 
-  .e-services-container {
-    flex-direction: column;
-  }
-
-  .e-service-card {
-    flex: unset;
-    width: 100%;
-  }
-
-  .e-services-heading {
-    font-size: $fs-3xl;
-    line-height: $lh-loose;
-  }
-}
-
-@include respond-to(sm) {
-  .e-services-heading {
-    font-size: $fs-2xl;
-    line-height: $lh-normal;
-  }
+  .e-service-card { flex: unset; width: 100%; }
 }

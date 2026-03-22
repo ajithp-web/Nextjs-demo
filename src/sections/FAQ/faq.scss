@@ -1,6 +1,8 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+//  FAQ
+
 .e-faq {
   @include section-container;
   @include section-block($space-20, $space-20, $space-12);
@@ -14,6 +16,7 @@
 
 .e-faq-heading {
   @include heading-xl;
+  @include heading-xl-responsive;
   color: $color-black;
   margin: 0;
 }
@@ -23,9 +26,10 @@
   margin: 0;
 }
 
+// ── Accordion list ───────────────────────────────────────
 .e-faq-list {
   width: 100%;
-  max-width: $max-width-narrow;
+  max-width: $max-width-narrow; 
   @include flex-col;
 }
 
@@ -57,8 +61,8 @@
 .e-faq-icon {
   flex-shrink: 0;
   @include flex-center;
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;  
+  height: 1.75rem;
 }
 
 .is-open .e-faq-question span:first-child {
@@ -71,7 +75,7 @@
   font-size: $fs-md;
   line-height: $lh-relaxed;
   margin: 0 0 $space-6 0;
-  max-width: 720px;
+  max-width: 45rem;
 }
 
 .e-faq-divider {
@@ -81,33 +85,18 @@
   flex-shrink: 0;
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(md) {
   .e-faq {
     padding-block: $space-16;
     gap: $space-9;
   }
 
-  .e-faq-heading {
-    font-size: $fs-3xl;
-    line-height: $lh-loose;
-  }
-
-  .e-faq-para {
-    font-size: $fs-md;
-  }
+  .e-faq-para { font-size: $fs-md; }
 
   .e-faq-question {
     padding: $space-6 0;
 
-    span:first-child {
-      font-size: $fs-md;
-    }
-  }
-}
-
-@include respond-to(sm) {
-  .e-faq-heading {
-    font-size: $fs-2xl;
-    line-height: $lh-normal;
+    span:first-child { font-size: $fs-md; }
   }
 }

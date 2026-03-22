@@ -1,53 +1,55 @@
 @use "../../../styles/variables" as *;
 @use "../../../styles/mixins" as *;
 
-// ── Footer wrapper ────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+//  Footer
+// ═══════════════════════════════════════════════════════════
+
 .e-footer {
   width: 100%;
   background-color: $color-bg-black;
   @include flex-col;
 }
 
-// ── Top section ───────────────────────────────────────────
+// ── Top ──────────────────────────────────────────────────
 .e-footer-top {
   width: 100%;
-  max-width: $max-width-content;              
-  margin: 0 auto;
-  padding: $space-16 $padding-inline $space-12; 
+  max-width: $max-width-content;
+  margin-inline: auto;
+  padding: $space-16 $padding-inline $space-12;
   display: flex;
   align-items: flex-start;
-  gap: $space-12;                               
+  gap: $space-12;
 }
 
-// ── Brand column ──────────────────────────────────────────
+// ── Brand column ─────────────────────────────────────────
 .e-footer-brand {
-  flex: 0 0 260px;                         
-  @include flex-col($space-7);                  
+  flex: 0 0 16.25rem; // 260px
+  @include flex-col($space-7);
 }
 
-.e-footer-logo {
-  display: inline-block;
-}
+.e-footer-logo { display: inline-block; }
 
-.e-footer-address {
-  font-family: $font-primary;                   
-  font-style: normal;
+// Shared small-text style for address & contact paragraphs
+%footer-small-text {
+  font-family: $font-primary;
   font-weight: $fw-regular;
-  font-size: $fs-sm;                          
+  font-size: $fs-sm;
   line-height: $lh-tight;
   color: $color-text-muted;
 }
 
+.e-footer-address {
+  @extend %footer-small-text;
+  font-style: normal;
+}
+
 .e-footer-contact {
-  @include flex-col($space-1);                 
+  @include flex-col($space-1);
 
   p {
-    font-family: $font-primary;
-    font-weight: $fw-regular;
-    font-size: $fs-sm;
-    line-height: $lh-tight;
+    @extend %footer-small-text;
     margin: 0;
-    color: $color-text-muted;
   }
 }
 
@@ -57,10 +59,8 @@
 }
 
 .e-contact-link {
-  color: $color-text-muted;
+  @extend %footer-small-text;
   text-decoration: none;
-  font-family: $font-primary;
-  font-size: $fs-sm;
   transition: color $transition-fast;
 
   &:hover {
@@ -69,11 +69,11 @@
   }
 }
 
-// ── Socials ───────────────────────────────────────────────
+// ── Socials ──────────────────────────────────────────────
 .e-footer-socials {
   display: flex;
   align-items: center;
-  gap: $space-5;                          
+  gap: $space-5;
 }
 
 .e-social-icon {
@@ -81,22 +81,20 @@
   @include flex-center;
   transition: color $transition-fast;
 
-  &:hover {
-    color: $color-white;
-  }
+  &:hover { color: $color-white; }
 }
 
-// ── Generic nav column ────────────────────────────────────
+// ── Nav column ───────────────────────────────────────────
 .e-footer-col {
   flex: 1;
-  @include flex-col($space-8);                  
+  @include flex-col($space-8);
 }
 
 .e-footer-col-heading {
-  font-family: $font-primary;                   
+  font-family: $font-primary;
   font-weight: $fw-semibold;
-  font-size: $fs-lg;                            
-  line-height: $lh-normal;                    
+  font-size: $fs-lg;
+  line-height: $lh-normal;
   color: $color-white;
   margin: 0;
 }
@@ -105,45 +103,48 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  @include flex-col($space-5);                  
+  @include flex-col($space-5);
 }
 
 .e-footer-link {
-  font-family: $font-primary;                  
+  font-family: $font-primary;
   font-weight: $fw-regular;
-  font-size: $fs-base;                         
+  font-size: $fs-base;
   line-height: $lh-tight;
   color: $color-text-muted;
   text-decoration: none;
   transition: color $transition-fast;
 
-  &:hover {
-    color: $color-white;
-  }
+  &:hover { color: $color-white; }
 }
 
-// ── Site Navigation — two sub-columns ─────────────────────
+// ── Site nav — two sub-columns ────────────────────────────
 .e-footer-nav-cols {
   display: flex;
   align-items: flex-start;
-  gap: $space-12;                             
+  gap: $space-12;
 }
 
-// ── Bottom bar ────────────────────────────────────────────
+// ── Bottom bar ───────────────────────────────────────────
+
+// Shared bottom-bar text style
+%footer-legal-text {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-xs;
+  line-height: 1.25rem; // 20px
+  color: $color-text-secondary;
+}
+
 .e-footer-bottom {
   width: 100%;
-  border-top: 1px solid $color-border-dark;    
+  border-top: 1px solid $color-border-dark;
   @include flex-between;
-  padding: $space-6 $padding-inline;           
-  max-width: 100%;
+  padding: $space-6 $padding-inline;
 }
 
 .e-footer-copy {
-  font-family: $font-primary;
-  font-weight: $fw-regular;
-  font-size: $fs-xs;                            
-  line-height: 20px;
-  color: $color-text-secondary;                 
+  @extend %footer-legal-text;
   margin: 0;
 }
 
@@ -160,48 +161,27 @@
 }
 
 .e-footer-legal-link {
-  font-family: $font-primary;
-  font-weight: $fw-regular;
-  font-size: $fs-xs;                            
-  line-height: 20px;
-  color: $color-text-secondary;                 
+  @extend %footer-legal-text;
   text-decoration: none;
   transition: color $transition-fast;
 
-  &:hover {
-    color: $color-white;
-  }
+  &:hover { color: $color-white; }
 }
 
 // ── Responsive ───────────────────────────────────────────
 @include respond-to(xl) {
-  .e-footer-top {
-    padding: $space-12 $space-6 $space-10;
-    gap: $space-8;
-  }
-
-  .e-footer-bottom {
-    padding: $space-5 $space-6;
-  }
+  .e-footer-top    { padding: $space-12 $space-6 $space-10; gap: $space-8; }
+  .e-footer-bottom { padding: $space-5 $space-6; }
 }
 
 @include respond-to(lg) {
-  .e-footer-top {
-    flex-wrap: wrap;
-    gap: $space-10;
-  }
+  .e-footer-top    { flex-wrap: wrap; gap: $space-10; }
 
-  .e-footer-brand {
-    flex: 1 1 100%;
-  }
+  .e-footer-brand  { flex: 1 1 100%; }
 
-  .e-footer-col {
-    flex: 1 1 calc(50% - #{$space-5});
-  }
+  .e-footer-col    { flex: 1 1 calc(50% - #{$space-5}); }
 
-  .e-footer-nav-cols {
-    gap: $space-8;
-  }
+  .e-footer-nav-cols { gap: $space-8; }
 }
 
 @include respond-to(md) {
@@ -211,94 +191,53 @@
     padding: $space-12 $space-5 $space-8;
   }
 
-  .e-footer-brand {
-    flex: 1 1 100%;
-  }
+  .e-footer-brand  { flex: 1 1 100%; }
 
-  .e-footer-col {
-    width: 100%;
-    gap: $space-6;
-  }
+  .e-footer-col    { width: 100%; gap: $space-6; }
 
-  .e-footer-nav-cols {
-    flex-direction: column;
-    gap: $space-4;
-  }
+  .e-footer-nav-cols { flex-direction: column; gap: $space-4; }
 
-  .e-footer-links {
-    gap: $space-4;
-  }
+  .e-footer-links  { gap: $space-4; }
 
   .e-footer-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: $space-3;
-    padding: $space-5 $space-5;
+    padding: $space-5;
   }
 }
 
 @include respond-to(sm) {
-  .e-footer-top {
-    padding: $space-10 $space-4 $space-8;
-    gap: $space-8;
-  }
+  .e-footer-top    { padding: $space-10 $space-4 $space-8; gap: $space-8; }
 
-  .e-footer-brand {
-    gap: $space-5;
-  }
+  .e-footer-brand  { gap: $space-5; }
 
   .e-footer-address,
   .e-footer-contact p {
     font-size: $fs-xs;
-    line-height: 20px;
+    line-height: 1.25rem;
   }
 
-  .e-footer-col-heading {
-    font-size: $fs-md;
-  }
+  .e-footer-col-heading { font-size: $fs-md; }
+  .e-footer-link        { font-size: $fs-sm; }
 
-  .e-footer-link {
-    font-size: $fs-sm;
-  }
-
-  .e-footer-bottom {
-    padding: $space-4 $space-4;
-  }
+  .e-footer-bottom { padding: $space-4; }
 
   .e-footer-copy,
-  .e-footer-legal-link {
-    font-size: 11px;
-  }
+  .e-footer-legal-link { font-size: 0.6875rem; } // 11px
 }
 
 @include respond-to(ipad) {
-  .e-footer-top {
-    gap: $space-10;
-    padding: $space-14 $space-8 $space-10;
-  }
+  .e-footer-top      { gap: $space-10; padding: $space-14 $space-8 $space-10; }
 
-  .e-footer-brand {
-    flex: 1 1 100%;
-    max-width: 420px;
-  }
+  .e-footer-brand    { flex: 1 1 100%; max-width: 26.25rem; } // 420px
 
-  .e-footer-col {
-    flex: 1 1 calc(50% - #{$space-6});
-  }
+  .e-footer-col      { flex: 1 1 calc(50% - #{$space-6}); }
 
-  .e-footer-nav-cols {
-    gap: $space-6;
-  }
+  .e-footer-nav-cols { gap: $space-6; }
 
-  .e-footer-col-heading {
-    font-size: $fs-md;
-  }
+  .e-footer-col-heading { font-size: $fs-md; }
+  .e-footer-link        { font-size: $fs-sm; }
 
-  .e-footer-link {
-    font-size: $fs-sm;
-  }
-
-  .e-footer-bottom {
-    padding: $space-5 $space-8;
-  }
+  .e-footer-bottom   { padding: $space-5 $space-8; }
 }

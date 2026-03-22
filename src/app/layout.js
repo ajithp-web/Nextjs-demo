@@ -1,7 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.scss";
+import { Inter, Outfit } from "next/font/google"; // ✅ import font
 
-// ── Metadata ──────────────────────────────────────────────
+// ── Load Outfit font ─────────────────────────────
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+});
+
+// ── Metadata ────────────────────────────────────
 export const metadata = {
   title: "Evoqins — Software development company",
   description:
@@ -18,8 +32,6 @@ export const metadata = {
   authors: [{ name: "Evoqins", url: "https://evoqins.com" }],
   creator: "Evoqins",
   publisher: "Evoqins",
-
-  // ── Favicon / Icons ───────────────────────────────────
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -28,22 +40,19 @@ export const metadata = {
     ],
     shortcut: "/favicon.ico",
   },
-
-  // ── Canonical URL ─────────────────────────────────────
- alternates: {
+  alternates: {
     canonical: "https://evoqins.com",
   },
-
-  // ── Robots ────────────────────────────────────────────
   robots: {
     index: true,
     follow: true,
   },
 };
 
+// ── Layout ──────────────────────────────────────
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <head>
         <link
           rel="stylesheet"

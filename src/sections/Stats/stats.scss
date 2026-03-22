@@ -1,44 +1,41 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-// ── Section ───────────────────────────────────────────────
+//  Stats
+
 .e-stats {
   width: 100%;
-  padding-block: $space-20;
+  @include section-padding-responsive;
   padding-inline: $padding-inline;
   @include flex-col($space-12);
   align-items: center;
   background-color: $color-bg-black;
 }
 
-// ── Header block ─────────────────────────────────────────
+// ── Header ───────────────────────────────────────────────
 .e-stats-head {
   @include section-header($space-6);
   max-width: $max-width-content;
   width: 100%;
 }
 
-// ── Icon pill ─────────────────────────────────────────────
 .e-stats-icon {
-  width: 48px;
-  height: 48px;
+  width: 3rem;   
+  height: 3rem;
   border-radius: $radius-full;
   background-color: #1a1a1a;
   border: 1.5px solid $color-border-dark2;
   @include flex-center;
   flex-shrink: 0;
 
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  img { width: 100%; height: 100%; }
 }
 
 .e-stats-heading {
   font-family: $font-primary;
   font-weight: $fw-semibold;
   font-size: $fs-5xl;
-  line-height: 54px;
+  line-height: 3.375rem; 
   letter-spacing: -0.02em;
   color: $color-white;
   margin: 0;
@@ -47,16 +44,13 @@
 .e-stats-para {
   @include body-text($color-text-muted);
   margin: 0;
-  max-width: 600px;
+  max-width: 37.5rem; 
 }
 
-// ── Metrics row ───────────────────────────────────────────
 .e-stats-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   width: 100%;
-  max-width: 960px;
+  max-width: 60rem; 
 }
 
 .e-stats-info {
@@ -70,8 +64,8 @@
 .e-stats-info-heading {
   font-family: $font-primary;
   font-weight: $fw-bold;
-  font-size: $fs-7xl;
-  line-height: 80px;
+  font-size: $fs-7xl;  
+  line-height: 5rem;   
   letter-spacing: -0.03em;
   color: $color-white;
   margin: 0;
@@ -82,40 +76,33 @@
   font-size: $fs-md;
   line-height: $lh-normal;
   margin: 0;
-  max-width: 180px;
+  max-width: 11.25rem; 
 }
 
 .e-stats-divider {
   width: 1px;
-  height: 80px;
+  height: 5rem; 
   background-color: $color-border-dark2;
   flex-shrink: 0;
   align-self: center;
 }
 
-// ── CTA button ────────────────────────────────────────────
+// ── CTA button ───────────────────────────────────────────
 .e-stats-button {
   @include btn-light;
-  width: 160px;
-  height: 48px;
+  width: 10rem;    
+  height: 3rem;    
   font-size: $fs-md;
   border-radius: $radius-sm;
-
-  &:hover {
-    background: $color-white;
-    color: $color-black;
-  }
 }
 
 // ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
-  .e-stats-info {
-    padding: 0 $space-8;
-  }
+  .e-stats-info { padding: 0 $space-8; }
 
   .e-stats-info-heading {
-    font-size: 52px;
-    line-height: 60px;
+    font-size: 3.25rem;  
+    line-height: 3.75rem; 
   }
 }
 
@@ -131,27 +118,23 @@
   }
 
   .e-stats-divider {
-    width: 60px;
+    width: 3.75rem; 
     height: 1px;
   }
 
-  .e-stats-info {
-    padding: $space-2 0;
-  }
+  .e-stats-info { padding: $space-2 0; }
 
   .e-stats-info-heading {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 3rem;   
+    line-height: 3.5rem;
   }
 
   .e-stats-heading {
     font-size: $fs-4xl;
-    line-height: 44px;
+    line-height: 2.75rem; 
   }
 
-  .e-stats-para {
-    font-size: $fs-md;
-  }
+  .e-stats-para { font-size: $fs-md; }
 }
 
 @include respond-to(sm) {
@@ -161,7 +144,7 @@
   }
 
   .e-stats-info-heading {
-    font-size: $fs-6xl;
-    line-height: 64px;
+    font-size: $fs-6xl;   
+    line-height: 4rem;  
   }
 }

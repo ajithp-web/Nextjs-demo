@@ -1,40 +1,52 @@
-// VARIABLES
+// ═══════════════════════════════════════════════════════════
+//  _variables.scss  — Single source of truth
+// ═══════════════════════════════════════════════════════════
 
 // ── Typography ───────────────────────────────────────────
-$font-primary: "Outfit", sans-serif;
+$font-primary:   "Outfit", sans-serif;
 $font-secondary: "Inter", sans-serif;
 
-$fw-regular:  400;
-$fw-medium:   500;
-$fw-semibold: 600;
-$fw-bold:     700;
+$fw-regular:   400;
+$fw-medium:    500;
+$fw-semibold:  600;
+$fw-bold:      700;
 $fw-extrabold: 800;
 
-// ── Font sizes ───────────────────────────────────────────
-$fs-xs:   13px;
-$fs-sm:   14px;
-$fs-base: 15px;
-$fs-md:   16px;
-$fs-lg:   18px;
-$fs-xl:   20px;
-$fs-2xl:  28px;
-$fs-3xl:  32px;
-$fs-4xl:  36px;
-$fs-5xl:  42px;
-$fs-6xl:  56px;
-$fs-7xl:  72px;
+// ── Font sizes (rem) ─────────────────────────────────────
+$fs-xs:   0.8125rem;  // 13px
+$fs-sm:   0.875rem;   // 14px
+$fs-base: 0.9375rem;  // 15px
+$fs-md:   1rem;       // 16px
+$fs-lg:   1.125rem;   // 18px
+$fs-xl:   1.25rem;    // 20px
+$fs-2xl:  1.75rem;    // 28px
+$fs-3xl:  2rem;       // 32px
+$fs-4xl:  2.25rem;    // 36px
+$fs-5xl:  2.625rem;   // 42px
+$fs-6xl:  3.5rem;     // 56px
+$fs-7xl:  4.5rem;     // 72px
 
-// ── Line heights ─────────────────────────────────────────
-$lh-tight:  24px;
-$lh-normal: 28px;
-$lh-relaxed:30px;
-$lh-loose:  44px;
+$fs-fluid-xs:  clamp(#{$fs-xs},  1vw,    #{$fs-sm});
+$fs-fluid-sm:  clamp(#{$fs-sm},  1vw,    #{$fs-md});
+$fs-fluid-md:  clamp(#{$fs-md},  1.5vw,  #{$fs-xl});
+$fs-fluid-lg:  clamp(#{$fs-2xl}, 3vw,    #{$fs-5xl});
+$fs-fluid-xl:  clamp(#{$fs-3xl}, 5vw,    #{$fs-7xl});
+
+// Section heading scale  (sm → lg breakpoints)
+$fs-heading-xl-sm: #{$fs-2xl};   // 28px — ≤ 480px
+$fs-heading-xl-md: #{$fs-3xl};   // 32px — ≤ 768px
+
+// ── Line heights (unitless) ──────────────────────────────
+$lh-tight:   1.4;
+$lh-normal:  1.6;
+$lh-relaxed: 1.8;
+$lh-loose:   2;
 
 // ── Colors ───────────────────────────────────────────────
-$color-white:       #ffffff;
-$color-black:       #000000;
-$color-yellow:      #FFD42D;
-$color-blue:        #1a3ed4;
+$color-white:  #ffffff;
+$color-black:  #000000;
+$color-yellow: #ffd42d;
+$color-blue:   #1a3ed4;
 
 // Text
 $color-text-primary:   #111111;
@@ -44,16 +56,16 @@ $color-text-light:     #b1b3bc;
 $color-text-dark:      #101828;
 
 // Light text on dark bg
-$color-text-white-60:  rgba(#ffffff, 0.6);
-$color-text-white-70:  rgba(#ffffff, 0.7);
-$color-text-white-85:  rgba(#ffffff, 0.85);
+$color-text-white-60: rgba(#ffffff, 0.6);
+$color-text-white-70: rgba(#ffffff, 0.7);
+$color-text-white-85: rgba(#ffffff, 0.85);
 
 // Backgrounds
-$color-bg-white:   #ffffff;
-$color-bg-black:   #000000;
-$color-bg-light:   #f6f6f6;
-$color-bg-muted:   #f4f4f4;
-$color-bg-dark:    #0d0d0d;
+$color-bg-white: #ffffff;
+$color-bg-black: #000000;
+$color-bg-light: #f6f6f6;
+$color-bg-muted: #f4f4f4;
+$color-bg-dark:  #0d0d0d;
 
 // Borders
 $color-border-light: #e4e7ec;
@@ -61,37 +73,37 @@ $color-border-muted: #dcdcdc;
 $color-border-dark:  #2a2a2a;
 $color-border-dark2: #2e2e2e;
 
-// ── Spacing ──────────────────────────────────────────────
-$space-1:  4px;
-$space-2:  8px;
-$space-3:  12px;
-$space-4:  16px;
-$space-5:  20px;
-$space-6:  24px;
-$space-7:  28px;
-$space-8:  32px;
-$space-9:  40px;
-$space-10: 48px;
-$space-11: 56px;
-$space-12: 64px;
-$space-14: 72px;
-$space-16: 80px;
-$space-20: 96px;
-$space-24: 112px;
+// ── Spacing (rem) ────────────────────────────────────────
+$space-1:  0.25rem;   //  4px
+$space-2:  0.5rem;    //  8px
+$space-3:  0.75rem;   // 12px
+$space-4:  1rem;      // 16px
+$space-5:  1.25rem;   // 20px
+$space-6:  1.5rem;    // 24px
+$space-7:  1.75rem;   // 28px
+$space-8:  2rem;      // 32px
+$space-9:  2.5rem;    // 40px
+$space-10: 3rem;      // 48px
+$space-11: 3.5rem;    // 56px
+$space-12: 4rem;      // 64px
+$space-14: 4.5rem;    // 72px
+$space-16: 5rem;      // 80px
+$space-20: 6rem;      // 96px
+$space-24: 7rem;      // 112px
 
 // ── Layout ───────────────────────────────────────────────
-$max-width-content: 1280px;
-$max-width-wide:    1440px;
-$max-width-narrow:  800px;
-$max-width-xs:      640px;
+$max-width-content: 80rem;   // 1280px
+$max-width-wide:    90rem;   // 1440px
+$max-width-narrow:  50rem;   //  800px
+$max-width-xs:      40rem;   //  640px
 
-$padding-inline: 32px;
+$padding-inline: clamp(1rem, 4vw, 2rem);
 
 // ── Border radius ────────────────────────────────────────
-$radius-sm:   4px;
-$radius-md:   6px;
-$radius-lg:   12px;
-$radius-xl:   16px;
+$radius-sm:   0.25rem;
+$radius-md:   0.375rem;
+$radius-lg:   0.75rem;
+$radius-xl:   1rem;
 $radius-full: 50%;
 
 // ── Transitions ──────────────────────────────────────────
@@ -99,9 +111,9 @@ $transition-fast:   0.2s ease;
 $transition-normal: 0.3s ease;
 $transition-slow:   0.35s ease;
 
-// ── Breakpoints ──────────────────────────────────────────
-$bp-xl:  1280px;
-$bp-lg:  1024px;
-$bp-md:  768px;
-$bp-sm:  480px;
-$bp-xs:  360px;
+// ── Breakpoints (keep px for @media) ────────────────────
+$bp-xl: 1280px;
+$bp-lg: 1024px;
+$bp-md: 768px;
+$bp-sm: 480px;
+$bp-xs: 360px;

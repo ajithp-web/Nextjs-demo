@@ -1,6 +1,10 @@
 @use "../../../styles/variables" as *;
 @use "../../../styles/mixins" as *;
 
+// ═══════════════════════════════════════════════════════════
+//  StickyNav
+// ═══════════════════════════════════════════════════════════
+
 .e-sec-nav {
   position: sticky;
   top: 0;
@@ -12,28 +16,24 @@
 }
 
 .e-navbar-links {
-  @include section-container(1040px, 0);
+  @include section-container(65rem, 0); // 1040px
   overflow-x: auto;
   overflow-y: visible;
   @include hide-scrollbar;
-  position: relative; 
+  position: relative;
 
+  // Right fade — hints at scroll
   &::after {
     content: "";
     position: absolute;
     right: 0;
     top: 0;
-    width: 80px;
+    width: 5rem; // 80px
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba($color-white, 0),
-      $color-white
-    );
+    background: linear-gradient(90deg, rgba($color-white, 0), $color-white);
     pointer-events: none;
     z-index: 2;
   }
-  
 }
 
 .e-navbar-links-inner {
@@ -54,9 +54,7 @@
     position: relative;
     transition: color $transition-fast;
 
-    &:hover {
-      color: rgba($color-black, 0.75);
-    }
+    &:hover { color: rgba($color-black, 0.75); }
   }
 
   a.is-brand {
@@ -81,6 +79,7 @@
   }
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
   .e-navbar-links {
     padding-inline: $space-5;
@@ -93,8 +92,6 @@
     padding-inline: $space-4;
     gap: $space-6;
 
-    a {
-      font-size: $fs-sm;
-    }
+    a { font-size: $fs-sm; }
   }
 }

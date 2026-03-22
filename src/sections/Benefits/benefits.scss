@@ -1,6 +1,8 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+//  Benefits
+
 .e-benefits {
   @include section-block($space-20, $space-20, $space-12);
   background: $color-bg-black;
@@ -13,15 +15,17 @@
 
 .e-b-heading {
   @include heading-xl;
+  @include heading-xl-responsive;
   color: #f9fafd;
 }
 
 .e-b-para {
   @include body-text($color-text-light);
-  max-width: 920px;
+  max-width: 57.5rem; 
   margin-inline: auto;
 }
 
+// ── Cards ────────────────────────────────────────────────
 .e-card-container {
   @include section-container;
   display: grid;
@@ -33,7 +37,6 @@
   width: 100%;
   padding: $space-6;
   @include flex-col($space-5);
-  // border: 1px solid $color-border-dark;
   border-radius: $radius-lg;
 }
 
@@ -46,10 +49,9 @@
   @include body-sm($color-text-light);
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
-  .e-card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .e-card-container { grid-template-columns: repeat(2, 1fr); }
 }
 
 @include respond-to(md) {
@@ -58,23 +60,7 @@
     gap: $space-9;
   }
 
-  .e-card-container {
-    grid-template-columns: 1fr;
-  }
+  .e-card-container { grid-template-columns: 1fr; }
 
-  .e-b-heading {
-    font-size: $fs-3xl;
-    line-height: $lh-loose;
-  }
-
-  .e-b-para {
-    font-size: $fs-md;
-  }
-}
-
-@include respond-to(sm) {
-  .e-b-heading {
-    font-size: $fs-2xl;
-    line-height: $lh-normal;
-  }
+  .e-b-para { font-size: $fs-md; }
 }

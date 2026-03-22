@@ -1,10 +1,12 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+//  Solutions
+
 .e-solutions {
   position: relative;
   width: 100%;
-  padding-block: $space-20;
+  @include section-padding-responsive;
   overflow: hidden;
   background-color: $color-bg-white;
 }
@@ -14,12 +16,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
+  height: 4.375rem; 
   z-index: 0;
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 2.5rem 2.5rem; 
 }
 
 .e-solutions__inner {
@@ -31,16 +33,18 @@
 
 .e-sol-head {
   @include heading-xl;
+  @include heading-xl-responsive;
   color: $color-black;
   margin: 0;
 }
 
 .e-sol-para {
   @include body-text($color-text-secondary);
-  max-width: 768px;
+  max-width: 48rem; 
   margin: 0;
 }
 
+// ── Cards grid ───────────────────────────────────────────
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -53,15 +57,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 320px;
+  min-height: 20rem;
   position: relative;
   transition: transform $transition-normal;
-  border: 1px solid $color-border-light;
-  border-radius: 0px;
 
-  &:hover {
-    transform: translateY(-4px);
-  }
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+
+  overflow: hidden;
 
   &__content {
     padding: $space-6 $space-5;
@@ -93,13 +98,13 @@
     margin-top: auto;
 
     img {
-      width: 16px;
-    }
+      width: 1rem;
+    } 
   }
 
   &__image-wrap {
     width: 100%;
-    height: 140px;
+    height: 8.75rem;
     overflow: hidden;
   }
 
@@ -110,6 +115,7 @@
   }
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
   .card-container {
     grid-template-columns: repeat(2, 1fr);
@@ -120,17 +126,5 @@
   .card-container {
     grid-template-columns: 1fr;
     gap: $space-4;
-  }
-
-  .e-sol-head {
-    font-size: $fs-3xl;
-    line-height: $lh-loose;
-  }
-}
-
-@include respond-to(sm) {
-  .e-sol-head {
-    font-size: $fs-2xl;
-    line-height: $lh-normal;
   }
 }

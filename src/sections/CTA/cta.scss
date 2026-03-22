@@ -1,9 +1,11 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+//  CTA Banner
+
 .e-cta {
-  @include section-container(1240px, 0);
-  height: 180px;
+  @include section-container(77.5rem, 0); 
+  height: 11.25rem; 
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #1a3ed4 0%, #1e3fdb 30%, #1a35c8 70%, #1630b8 100%);
@@ -14,13 +16,10 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  @include grid-overlay(0.07, 64px);
+  @include grid-overlay(0.07, $space-12);
 }
 
-.e-cta-corner {
-  @include corner-triangle(52px, $color-yellow);
-}
-
+.e-cta-corner { @include corner-triangle(3.25rem, $color-yellow); }
 .e-cta-inner {
   position: relative;
   z-index: 1;
@@ -34,17 +33,17 @@
   font-family: $font-primary;
   font-weight: $fw-extrabold;
   font-size: $fs-4xl;
-  line-height: 46px;
+  line-height: 2.875rem; 
   letter-spacing: -0.02em;
   color: $color-white;
   margin: 0;
 }
 
 .e-cta-button {
-  @include btn-base(52px, $fs-base);
+  @include btn-base(3.25rem, $fs-base); 
   @include flex-center;
   flex-shrink: 0;
-  width: 160px;
+  width: 10rem;  // 160px
   border-radius: $radius-md;
   background: $color-white;
   color: $color-black;
@@ -53,33 +52,45 @@
   &:hover { background: #f0f0f0; }
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
   .e-cta {
     height: auto;
-    min-height: 180px;
+    min-height: 11.25rem;
   }
 
   .e-cta-inner {
-    padding: $space-8 $space-8;
+    padding: $space-8;
     flex-direction: column;
     align-items: flex-start;
     gap: $space-6;
   }
 
-  .e-cta-heading {
-    font-size: 28px;
-    line-height: 38px;
-  }
+  .e-cta-heading { font-size: 1.75rem; line-height: 2.375rem; } 
 }
 
 @include respond-to(md) {
-  .e-cta-heading {
-    font-size: 22px;
-    line-height: 32px;
-  }
+  .e-cta-inner { padding: $space-6; gap: $space-5; }
 
-  .e-cta-button {
-    width: 140px;
-    height: 44px;
-  }
+  .e-cta-heading { font-size: 1.375rem; line-height: 2rem; } 
+
+  .e-cta-button  { width: 8.75rem; height: 2.75rem; font-size: $fs-sm; } 
+
+  .e-cta-corner  { @include corner-triangle(2.5rem, $color-yellow); } 
+}
+
+@include respond-to(sm) {
+  .e-cta-inner  { padding: $space-5 $space-4; gap: $space-4; }
+
+  .e-cta-heading { font-size: 1.25rem; line-height: 1.75rem; } 
+
+  .e-cta-button  { width: 8rem; height: 2.625rem; font-size: $fs-sm; }
+}
+
+@include respond-to(xs) {
+  .e-cta-inner  { padding: $space-4 $space-3; }
+
+  .e-cta-heading { font-size: 1.125rem; line-height: 1.625rem; }
+
+  .e-cta-button  { width: 7.5rem; height: 2.5rem; } 
 }

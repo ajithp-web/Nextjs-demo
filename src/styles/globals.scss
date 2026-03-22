@@ -1,8 +1,21 @@
 @use "./variables" as *;
 @use "../components/layout/Navbar/navbar";
 
+html,
+body {
+  font-family: $font-primary;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+* {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
 .hero-wrapper {
   position: relative;
   width: 100%;
-    background: url("/hero-card.png") center/cover no-repeat;
+  background: url("/hero-card.png") center/cover no-repeat;
 }

@@ -1,19 +1,20 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-// ── Section ───────────────────────────────────────────────
+//  Technologies
+
 .e-technologies {
   width: 100%;
-  max-width: 1374px;
-  min-height: 572px;
-  margin: 0 auto;
+  max-width: 85.875rem; 
+  min-height: 35.75rem; 
+  margin-inline: auto;
   padding-block: $space-24;
   @include flex-col($space-14);
   align-items: center;
   background-color: $color-bg-white;
 }
 
-// ── Header ────────────────────────────────────────────────
+// ── Header ───────────────────────────────────────────────
 .e-t-header {
   @include section-container;
   @include flex-col($space-8);
@@ -31,69 +32,55 @@
   @include body-text($color-black);
   text-align: center;
   margin: 0;
-  max-width: 760px;
+  max-width: 47.5rem; 
 }
 
-// ── Image wrapper ─────────────────────────────────────────
 .e-image-wrapper {
   @include section-container;
-  @include flex-col($space-10);
   align-items: center;
-  position: relative; // IMPORTANT
-  overflow: hidden;   // hide overflow for fade
+  position: relative;
+  width: 100%;
 }
 
-// LEFT FADE
-.e-image-wrapper::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
+.e-image-wrapper--rows {
+  @include flex-col($space-10);
+  overflow: hidden;
 
-  background: linear-gradient(
-    to right,
-    $color-bg-white 0%,
-    rgba(255, 255, 255, 0.8) 40%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 7.5rem; 
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $color-bg-white 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, $color-bg-white 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
+  }
 }
 
-// RIGHT FADE
-.e-image-wrapper::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
+.e-image-wrapper--grid { display: none; }
 
-  background: linear-gradient(
-    to left,
-    $color-bg-white 0%,
-    rgba(255, 255, 255, 0.8) 40%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-// ── Logo row ─────────────────────────────────────────────
 .e-image-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 164px;
+  gap: 10.25rem;
 }
 
-// ── Individual logo ───────────────────────────────────────
 .e-logo-item {
   @include flex-center;
-  width: 60px;
-  height: 60px;
+  width: 3.75rem; 
+  height: 3.75rem;
   flex-shrink: 0;
 
   img {
@@ -103,7 +90,6 @@
   }
 }
 
-// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
   .e-image-row {
     gap: $space-12;
@@ -115,62 +101,52 @@
   .e-technologies {
     padding-block: $space-16;
     gap: $space-9;
+    min-height: unset;
   }
 
-  .e-image-row {
-    gap: $space-9;
-  }
+  .e-image-row  { gap: $space-9; }
 
-  .e-logo-item {
-    width: 48px;
-    height: 48px;
-  }
+  .e-logo-item  { width: 3rem; height: 3rem; }
 
-  .e-t-heading { font-size: 24px; line-height: 34px; }
-  .e-t-para    { font-size: $fs-md; }
+  .e-t-heading  { font-size: 1.5rem; line-height: 2.125rem; }
+
+  .e-t-para     { font-size: $fs-md; }
+
+  .e-image-wrapper--rows::before,
+  .e-image-wrapper--rows::after { width: 3.75rem; } 
 }
 
 @include respond-to(sm) {
-  .e-image-wrapper {
+  .e-technologies {
+    padding-block: $space-10;
+    gap: $space-8;
+  }
+
+  .e-t-heading { font-size: 1.25rem; line-height: 1.75rem; }
+  .e-t-para    { font-size: $fs-sm; }
+
+  .e-image-wrapper--rows { display: none; }
+
+  .e-image-wrapper--grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: $space-6;
-  }
-
-  .e-image-row {
-    display: contents; 
+    overflow: visible;
   }
 
   .e-logo-item {
+    width: 2.75rem; 
+    height: 2.75rem;
     justify-self: center;
+    align-self: center;
+  }
+}
+
+@include respond-to(xs) {
+  .e-image-wrapper--grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-5;
   }
 
-  .e-logo-item:nth-child(n + 5) {
-    grid-column: span 1;
-  }
-
-  .e-logo-item:nth-child(n + 5):nth-child(-n + 7) {
-    grid-column: span 1;
-  }
-
-  // Center 3 items rows
-  .e-logo-item:nth-child(5) {
-    grid-column: 2;
-  }
-  .e-logo-item:nth-child(6) {
-    grid-column: 3;
-  }
-  .e-logo-item:nth-child(7) {
-    grid-column: 4;
-  }
-
-  .e-logo-item:nth-child(8) {
-    grid-column: 2;
-  }
-  .e-logo-item:nth-child(9) {
-    grid-column: 3;
-  }
-  .e-logo-item:nth-child(10) {
-    grid-column: 4;
-  }
+  .e-logo-item { width: 2.5rem; height: 2.5rem; }
 }

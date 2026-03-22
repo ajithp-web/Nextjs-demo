@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./technologies.scss";
 
 const ROW1 = [
-  { src: "/tec10.png", alt: "Next.js" },   
+  { src: "/tec10.png", alt: "Next.js" },
   { src: "/flutter.png", alt: "Flutter" },
   { src: "/tec8.svg", alt: "Python" },
   { src: "/tec7.svg", alt: "MongoDB" },
@@ -18,6 +18,8 @@ const ROW2 = [
   { src: "/aws-2.svg", alt: "AWS" },
 ];
 
+const ALL_LOGOS = [...ROW1, ...ROW2];
+
 export default function Technologies() {
   return (
     <section className="e-technologies">
@@ -25,11 +27,12 @@ export default function Technologies() {
         <h3 className="e-t-heading">Technologies We Use</h3>
         <p className="e-t-para">
           To deliver robust, scalable, and innovative solutions, we leverage a
-          variety of cutting-edge tools, languages, and framework
+          variety of cutting-edge tools, languages, and frameworks
         </p>
       </div>
 
-      <div className="e-image-wrapper">
+      {/* Desktop & tablet: two separate rows */}
+      <div className="e-image-wrapper e-image-wrapper--rows">
         <div className="e-image-row">
           {ROW1.map((logo) => (
             <div className="e-logo-item" key={logo.alt}>
@@ -44,6 +47,15 @@ export default function Technologies() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Mobile: single flat grid */}
+      <div className="e-image-wrapper e-image-wrapper--grid">
+        {ALL_LOGOS.map((logo) => (
+          <div className="e-logo-item" key={logo.alt}>
+            <img src={logo.src} alt={logo.alt} />
+          </div>
+        ))}
       </div>
     </section>
   );

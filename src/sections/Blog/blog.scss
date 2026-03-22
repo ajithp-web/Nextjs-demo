@@ -1,10 +1,12 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+//  Blog
+
 .e-blog {
   width: 100%;
   background-color: $color-bg-white;
-  padding-block: $space-20;
+  @include section-padding-responsive($space-20, $space-16, $space-12);
 }
 
 .e-blog-inner {
@@ -14,10 +16,12 @@
 
 .e-blog-heading {
   @include heading-xl;
+  @include heading-xl-responsive;
   color: $color-text-primary;
   margin: 0;
 }
 
+// ── Cards row ────────────────────────────────────────────
 .e-blog-container {
   display: flex;
   align-items: flex-start;
@@ -30,9 +34,6 @@
   @include flex-col($space-4);
   text-decoration: none;
   cursor: pointer;
-
-  &:hover .e-blog-img   { transform: scale(1.03); }
-  &:hover .e-blog-title { color: $color-blue; }
 }
 
 .e-blog-thumb {
@@ -44,7 +45,7 @@
 }
 
 .e-blog-corner {
-  @include corner-triangle(40px, $color-yellow);
+  @include corner-triangle(2.5rem, $color-yellow); 
 }
 
 .e-blog-img {
@@ -52,6 +53,7 @@
   transition: transform $transition-slow;
 }
 
+// ── Meta row ─────────────────────────────────────────────
 .e-blog-meta {
   display: flex;
   align-items: center;
@@ -93,38 +95,13 @@
   transition: color $transition-fast;
 }
 
+// ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
-  .e-blog-container {
-    gap: $space-6;
-  }
+  .e-blog-container { gap: $space-6; }
 }
 
 @include respond-to(md) {
-  .e-blog {
-    padding-block: $space-16;
-  }
+  .e-blog-container { flex-direction: column; }
 
-  .e-blog-container {
-    flex-direction: column;
-  }
-
-  .e-blog-card {
-    width: 100%;
-  }
-
-  .e-blog-heading {
-    font-size: $fs-3xl;
-    line-height: $lh-loose;
-  }
-}
-
-@include respond-to(sm) {
-  .e-blog {
-    padding-block: $space-12;
-  }
-
-  .e-blog-heading {
-    font-size: $fs-2xl;
-    line-height: $lh-normal;
-  }
+  .e-blog-card { width: 100%; }
 }

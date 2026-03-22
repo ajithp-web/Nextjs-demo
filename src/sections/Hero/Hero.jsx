@@ -35,16 +35,18 @@ const Hero = () => {
         }
       }
 
-      // Floating icons translation
-      const moveAmount = Math.min(scrollY * 0.1, 30);
+      // Floating icons parallax — proportional to unit width
+      const unit = document.querySelector(".heroVisualUnit");
+      const unitWidth = unit ? unit.offsetWidth : window.innerWidth;
+      const moveAmount = Math.min((scrollY / unitWidth) * 70, 30);
 
       const moves = [
-        [".iconGroupLeft", `-${moveAmount}px`, "X"],
-        [".iconGroupRight", `${moveAmount}px`, "X"],
-        [".floatingIcon.react", `-${moveAmount}px`, "X"],
-        [".floatingIcon.python", `-${moveAmount}px`, "X"],
-        [".floatingIcon.android", `${moveAmount}px`, "X"],
-        [".floatingIcon.mysql", `${moveAmount}px`, "X"],
+        [".iconGroupLeft",    `-${moveAmount}px`],
+        [".iconGroupRight",   `${moveAmount}px`],
+        [".floatingIcon.react",   `-${moveAmount}px`],
+        [".floatingIcon.python",  `-${moveAmount}px`],
+        [".floatingIcon.android", `${moveAmount}px`],
+        [".floatingIcon.mysql",   `${moveAmount}px`],
       ];
 
       moves.forEach(([selector, value]) => {
@@ -95,79 +97,85 @@ const Hero = () => {
 
           {/* Visual */}
           <div className="heroVisual">
-            {/* Phone */}
-            <div className="phoneWrapper">
-              <div className="iphone13Pro">
-                <img src="/phonebody.png" className="phoneBodyFrame" />
-                <div className="screen">
-                  <div className="scrollContent" ref={scrollRef}>
-                    <img src="/phoneimage2.png" className="screenImg" />
-                    <div className="screenImgClip">
-                      <img
-                        src="/phone_image2.png"
-                        className="screenImg screenImgSecond"
-                        ref={lastImgRef}
-                      />
+
+            {/* ── All icons + phone as one scaling unit ── */}
+            <div className="heroVisualUnit">
+
+              {/* Phone */}
+              <div className="phoneWrapper">
+                <div className="iphone13Pro">
+                  <img src="/phonebody.png" className="phoneBodyFrame" alt="" />
+                  <div className="screen">
+                    <div className="scrollContent" ref={scrollRef}>
+                      <img src="/phoneimage2.png" className="screenImg" alt="" />
+                      <div className="screenImgClip">
+                        <img
+                          src="/phone_image2.png"
+                          className="screenImg screenImgSecond"
+                          ref={lastImgRef}
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <img src="/phonenotch.png" className="notch" />
-              </div>
-            </div>
-
-            <div className="iconGroupLeft">
-              <div className="floatingIcon bulb">
-                <img src="/bulb1.png" />
-              </div>
-
-              <img
-                src="/arrowline.png"
-                alt="bulb to window"
-                className="connectorImg bulbToWindow"
-              />
-
-              <div className="floatingIcon window">
-                <div className="iconBox">
-                  <img src="/window.png" />
-                </div>
-              </div>
-            </div>
-
-            {/* ===== RIGHT GROUP: VSCode + Arrow + Rocket ===== */}
-            <div className="iconGroupRight">
-              <div className="floatingIcon vscode">
-                <div className="iconBox">
-                  <img src="/vscode.png" />
+                  <img src="/phonenotch.png" className="notch" alt="" />
                 </div>
               </div>
 
-              <img
-                src="/arrowline.png"
-                alt="vscode to rocket"
-                className="connectorImg vscodeToRocket"
-              />
+              {/* LEFT GROUP: Bulb → connector → Window */}
+              <div className="iconGroupLeft">
+                <div className="floatingIcon bulb">
+                  <img src="/bulb1.png" alt="Bulb" />
+                </div>
 
-              <div className="floatingIcon rocket">
-                <img src="/rocket1.png" />
+                <img
+                  src="/arrowline.png"
+                  alt=""
+                  className="connectorImg bulbToWindow"
+                />
+
+                <div className="floatingIcon window">
+                  <img src="/window.png" alt="Window" />
+                </div>
               </div>
-            </div>
 
-            {/* Standalone Floating Icons */}
-            <div className="floatingIcon react">
-              <img src="/react1.png" />
-            </div>
+              {/* RIGHT GROUP: VSCode → connector → Rocket */}
+              <div className="iconGroupRight">
+                <div className="floatingIcon vscode">
+                  <img src="/vscode.png" alt="VSCode" />
+                </div>
 
-            <div className="floatingIcon python">
-              <img src="/python1.png" />
-            </div>
+                <img
+                  src="/arrowline.png"
+                  alt=""
+                  className="connectorImg vscodeToRocket"
+                />
 
-            <div className="floatingIcon android">
-              <img src="/android1.png" />
-            </div>
+                <div className="floatingIcon rocket">
+                  <img src="/rocket1.png" alt="Rocket" />
+                </div>
+              </div>
 
-            <div className="floatingIcon mysql">
-              <img src="/sql1.png" />
+              {/* Standalone floating icons */}
+              <div className="floatingIcon react">
+                <img src="/react1.png" alt="React" />
+              </div>
+
+              <div className="floatingIcon python">
+                <img src="/python1.png" alt="Python" />
+              </div>
+
+              <div className="floatingIcon android">
+                <img src="/android1.png" alt="Android" />
+              </div>
+
+              <div className="floatingIcon mysql">
+                <img src="/sql1.png" alt="MySQL" />
+              </div>
+
             </div>
+            {/* ── end heroVisualUnit ── */}
+
           </div>
         </div>
       </div>
