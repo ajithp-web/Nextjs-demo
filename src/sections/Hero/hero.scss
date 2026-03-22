@@ -178,7 +178,6 @@
   margin-bottom: 0;
 }
 
-
 .heroVisualUnit {
   position: absolute;
   bottom: 0;
@@ -196,7 +195,7 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
-  width: 18%;     
+  width: 18%;
   z-index: 10;
   line-height: 0;
 }
@@ -291,7 +290,6 @@
     display: block;
   }
 
-
   &.bulb,
   &.react,
   &.python,
@@ -302,13 +300,11 @@
     aspect-ratio: 1;
   }
 
-
   &.window,
   &.vscode {
     width: 8.7%;
     aspect-ratio: 133 / 104;
   }
-
 
   &.bulb {
     left: 8.14%;
@@ -372,17 +368,19 @@
   }
 }
 
-
+// ── 1300px breakpoint ─────────────────────────────────────
 @media (max-width: 1300px) {
   .heroBtn {
     margin-bottom: clamp(2rem, calc(2rem + 6 * ((100vw - 484px) / 816)), 8rem);
   }
 }
 
+// ── 1024px breakpoint ─────────────────────────────────────
 @media (max-width: 1024px) {
   .heroVisual { height: 33.33vw; }
 }
 
+// ── md breakpoint ─────────────────────────────────────────
 @include respond-to(md) {
   .heroInner  { padding-bottom: 12px; }
 
@@ -418,9 +416,9 @@
   }
 }
 
-// ── Small devices: phone only, no icons ───────────────────
+// ── sm breakpoint: phone only, no icons ───────────────────
 @include respond-to(sm) {
-  .hero       { min-height: 50svh; }
+  .hero { min-height: 50svh; }
 
   .heroGridOverlay { inset: 130px 0 0 0; }
 
@@ -443,15 +441,26 @@
     width: 120px;
     height: 48px;
     font-size: 1rem;
-   
     margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   }
 
+  // ── KEY FIX: pull visual flush to section bottom ──
+  .heroInner {
+    padding-bottom: 0;
+  }
 
-  .heroVisual { height: 88vw; }
+  .heroVisual {
+    height: 88vw;
+    margin-bottom: -2px; // close subpixel gap between phone and bg image
+  }
+
+  .heroVisualUnit {
+    bottom: 0;
+  }
 
   .phoneWrapper {
     width: 44%;
+    bottom: 0; // ensure phone sits flush at the base of the unit
   }
 
   .iconGroupLeft,
@@ -462,6 +471,7 @@
   }
 }
 
+// ── 360px and below ───────────────────────────────────────
 @media (max-width: 360px) {
   .heroHeading {
     font-size: clamp(1.2rem, 8vw, 1.6rem);
@@ -481,9 +491,13 @@
     margin-bottom: 1.5rem;
   }
 
-  .heroVisual { height: 104vw; }
+  .heroVisual {
+    height: 104vw;
+    margin-bottom: -2px; // same flush fix at this size
+  }
 
   .phoneWrapper {
     width: 52%;
+    bottom: 0;
   }
 }
