@@ -66,14 +66,29 @@
       45px 45px,
       45px 45px,
       180px 180px;
-    background-position: 0 0, 0 0, 0 0;
+    background-position:
+      0 0,
+      0 0,
+      0 0;
     background-repeat: repeat;
     -webkit-mask-image:
       linear-gradient(to bottom, transparent 0%, black 12%, black 100%),
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+      );
     mask-image:
       linear-gradient(to bottom, transparent 0%, black 12%, black 100%),
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+      );
     mask-composite: intersect;
   }
 
@@ -85,8 +100,20 @@
       linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
     background-size: 45px 45px;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
   }
 }
 
@@ -107,12 +134,18 @@
   color: $color-text-white-60;
   text-decoration: none;
 
-  &:hover { color: rgba($color-white, 0.9); }
+  &:hover {
+    color: rgba($color-white, 0.9);
+  }
 }
 
-.breadcrumbSeparator { color: rgba($color-white, 0.4); }
+.breadcrumbSeparator {
+  color: rgba($color-white, 0.4);
+}
 
-.breadcrumbCurrent { color: $color-white; }
+.breadcrumbCurrent {
+  color: $color-white;
+}
 
 // ── Hero content ──────────────────────────────────────────
 .heroContent {
@@ -138,9 +171,8 @@
 }
 
 .heroHeadingGradient {
-  background:
-    linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    linear-gradient(89.46deg, #76cafb 2.5%, #8792bf 36.82%, #d786b0 74.86%);
+  background: linear-gradient(to right, #8497d1, #c999c1);
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -302,42 +334,42 @@
 
   &.bulb {
     left: 8.14%;
-    top:  40.33%;
+    top: 40.33%;
   }
 
   &.window {
     left: 23.61%;
-    top:  30.83%;
+    top: 30.83%;
   }
 
   &.react {
     left: 33.85%;
-    top:  25.08%;
+    top: 25.08%;
   }
 
   &.python {
     left: 33.85%;
-    top:  43.54%;
+    top: 43.54%;
   }
 
   &.android {
     right: 33.85%;
-    top:  25.08%;
+    top: 25.08%;
   }
 
   &.mysql {
     right: 33.85%;
-    top:  43.54%;
+    top: 43.54%;
   }
 
   &.vscode {
     right: 23.61%;
-    top:   30.83%;
+    top: 30.83%;
   }
 
   &.rocket {
     right: 7.9%;
-    top:   7.08%;
+    top: 7.08%;
   }
 }
 
@@ -348,17 +380,17 @@
   opacity: 0.85;
 
   &.bulbToWindow {
-    left:      17.1%;
-    top:       48.46%;
+    left: 17.1%;
+    top: 48.46%;
     transform: rotate(-180deg);
-    width:      6.5%;
+    width: 6.5%;
   }
 
   &.vscodeToRocket {
-    right:     17.1%;
-    top:       27.08%;
+    right: 17.1%;
+    top: 27.08%;
     transform: rotate(360deg);
-    width:      6.5%;
+    width: 6.5%;
   }
 }
 
@@ -379,11 +411,35 @@
       linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
     background-size: 45px 45px;
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+      );
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+      );
     mask-composite: intersect;
   }
 }
@@ -397,7 +453,9 @@
 
 // ── md breakpoint ─────────────────────────────────────────
 @include respond-to(md) {
-  .heroInner  { padding-bottom: 12px; }
+  .heroInner {
+    padding-bottom: 12px;
+  }
 
   .breadcrumbs {
     font-size: $fs-sm;
@@ -406,19 +464,25 @@
 }
 
 @media (max-width: 768px) {
-    .heroInner {
-        padding-bottom: 0px;
-    }
+  .heroInner {
+    padding-bottom: 0px;
+  }
 }
 
 // ── sm breakpoint ─────────────────────────────────────────
 @include respond-to(sm) {
-  .hero { min-height: 50svh; }
+  .hero {
+    min-height: 50svh;
+  }
 
   /* ↓ Adjusted for sm: 3 rows down from 130px → 265px */
-  .heroGridOverlay { inset: 265px 0 0 0; }
+  .heroGridOverlay {
+    inset: 265px 0 0 0;
+  }
 
-  .breadcrumbs { display: none; }
+  .breadcrumbs {
+    display: none;
+  }
 
   .heroHeading {
     font-size: clamp(1.4rem, 7vw, 2rem);
