@@ -4,7 +4,7 @@
 // ── Section ───────────────────────────────────────────────
 .hero {
   width: 100%;
-  min-height: 100svh;
+  min-height: 95svh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40%;
+    height: 18%;
     background: linear-gradient(180deg, rgba(35, 35, 35, 0) 0%, #232323 100%);
     z-index: 0;
     pointer-events: none;
@@ -49,7 +49,7 @@
 // ── Grid overlay ──────────────────────────────────────────
 .heroGridOverlay {
   position: absolute;
-  inset: 240px 0 0 0;
+  inset: 205px 0 0 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -57,7 +57,7 @@
   &::before {
     content: "";
     position: absolute;
-    inset: 0 0 15% 0;
+    inset: 0;
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
@@ -69,10 +69,10 @@
     background-position: 0 0, 0 0, 0 0;
     background-repeat: repeat;
     -webkit-mask-image:
-      linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 12%, black 100%),
       linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     mask-image:
-      linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 12%, black 100%),
       linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     mask-composite: intersect;
   }
@@ -120,7 +120,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: clamp(12px, 2vh, 24px);
+  padding-top: clamp(62px, 2vh, 24px);
   z-index: 1;
   width: 100%;
   flex: 1;
@@ -166,27 +166,22 @@
   font-size: $fs-lg;
   font-weight: $fw-semibold;
   cursor: pointer;
-  margin-bottom: 10rem;
 }
 
 // ── Visual ────────────────────────────────────────────────
 .heroVisual {
   position: relative;
   width: 100%;
-  height: clamp(340px, 50vh, 560px);
-  margin-top: auto;
-  margin-bottom: 0;
+  max-width: 1440px;
+  aspect-ratio: 1440 / 480;
+  margin: auto auto 0 auto;
 }
 
 .heroVisualUnit {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  // Scale from 320px to 1440px with the viewport
-  width: clamp(320px, 100vw, 1440px);
-  aspect-ratio: 1440 / 480;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 // ── Phone ─────────────────────────────────────────────────
@@ -235,7 +230,6 @@
 }
 
 .scrollContent {
-  transition: transform 0.1s linear;
   will-change: transform;
 }
 
@@ -368,16 +362,37 @@
   }
 }
 
-// ── 1300px breakpoint ─────────────────────────────────────
-@media (max-width: 1300px) {
-  .heroBtn {
-    margin-bottom: clamp(2rem, calc(2rem + 6 * ((100vw - 484px) / 816)), 8rem);
+// ── Post-hero spacer ──────────────────────────────────────
+.heroSpacer {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    background-size: 45px 45px;
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-composite: intersect;
   }
 }
 
-// ── 1024px breakpoint ─────────────────────────────────────
-@media (max-width: 1024px) {
-  .heroVisual { height: 33.33vw; }
+// ── 1300px breakpoint ─────────────────────────────────────
+@media (max-width: 1300px) {
+  .heroBtn {
+    margin-bottom: clamp(2rem, calc(2rem + 5 * ((100vw - 484px) / 816)), 7rem);
+  }
 }
 
 // ── md breakpoint ─────────────────────────────────────────
@@ -388,39 +403,20 @@
     font-size: $fs-sm;
     margin-left: clamp(12px, 5vw, 40px);
   }
-
-  .heroVisual { height: 33.33vw; }
-
-  .phoneWrapper {
-    width: 26%;
-  }
-
-  .floatingIcon {
-    &.bulb,
-    &.react,
-    &.python,
-    &.android,
-    &.mysql,
-    &.rocket {
-      width: 18%;
-    }
-
-    &.window,
-    &.vscode {
-      width: 12%;
-    }
-  }
-
-  .connectorImg {
-    width: 9%;
-  }
 }
 
-// ── sm breakpoint: phone only, no icons ───────────────────
+@media (max-width: 768px) {
+    .heroInner {
+        padding-bottom: 0px;
+    }
+}
+
+// ── sm breakpoint ─────────────────────────────────────────
 @include respond-to(sm) {
   .hero { min-height: 50svh; }
 
-  .heroGridOverlay { inset: 130px 0 0 0; }
+  /* ↓ Adjusted for sm: 3 rows down from 130px → 265px */
+  .heroGridOverlay { inset: 265px 0 0 0; }
 
   .breadcrumbs { display: none; }
 
@@ -444,30 +440,8 @@
     margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
   }
 
-  // ── KEY FIX: pull visual flush to section bottom ──
   .heroInner {
     padding-bottom: 0;
-  }
-
-  .heroVisual {
-    height: 88vw;
-    margin-bottom: -2px; // close subpixel gap between phone and bg image
-  }
-
-  .heroVisualUnit {
-    bottom: 0;
-  }
-
-  .phoneWrapper {
-    width: 44%;
-    bottom: 0; // ensure phone sits flush at the base of the unit
-  }
-
-  .iconGroupLeft,
-  .iconGroupRight,
-  .floatingIcon,
-  .connectorImg {
-    display: none;
   }
 }
 
@@ -489,15 +463,5 @@
     height: 44px;
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
-  }
-
-  .heroVisual {
-    height: 104vw;
-    margin-bottom: -2px; // same flush fix at this size
-  }
-
-  .phoneWrapper {
-    width: 52%;
-    bottom: 0;
   }
 }

@@ -57,7 +57,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 2.5rem;   
+  width: 2.5rem;
   height: 2.5rem;
   border-radius: $radius-full;
   border: 1px solid $color-black;
@@ -81,6 +81,7 @@
   line-height: $lh-relaxed;
   color: $color-text-secondary;
   margin: 0;
+  letter-spacing: 0%;
 }
 
 .process-btn {
@@ -89,16 +90,19 @@
 
   button {
     @include btn-dark;
-    padding: $space-3 $space-8;
     font-size: $fs-md;
-    height: 3rem; 
-    border-radius: $radius-sm;
+    width: 8.3125rem;
+    height: 3rem;
+    border-radius: 0px;
   }
 }
 
 // ── Responsive ───────────────────────────────────────────
 @include respond-to(lg) {
-  .e-p-container { grid-template-columns: repeat(2, 1fr); gap: $space-10 $space-8; }
+  .e-p-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-10 $space-8;
+  }
 }
 
 @include respond-to(md) {
@@ -112,5 +116,7 @@
     gap: $space-10;
   }
 
-  .e-p-header-para { font-size: $fs-md; }
+  .e-p-header-para {
+    font-size: $fs-md;
+  }
 }

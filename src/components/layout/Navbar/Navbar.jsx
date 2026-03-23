@@ -8,7 +8,7 @@ export default function Navbar() {
         
         {/* Logo */}
         <a className="navbar-brand navbar-logo" href="#">
-          <Image src="/logo.png" alt="logo" width={126} height={32} />
+          <Image src="/logo.png" alt="logo" width={126} height={32} aria-label="Company Logo" />
         </a>
 
         {/* Mobile Toggle */}
@@ -21,32 +21,28 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Nav Links */}
-        <div className="collapse navbar-collapse justify-content-center" id="mainNavbar">
+        {/* Nav Links & Actions Wrapper */}
+        <div className="collapse navbar-collapse" id="mainNavbar">
           <div className="navbar-links">
-            <a
-              className="d-inline-flex align-items-center justify-content-center gap-2"
-              href="#"
-            >
+            <a className="nav-item-link" href="#">
               <span>Services</span>
-              <i className="bi bi-chevron-down"></i>
+              <i className="bi bi-chevron-down ms-2"></i>
             </a>
-
-            <a href="#">Portfolio</a>
-            <a href="#">About us</a>
-          </div>
-        </div>
-
-        {/* Right Section */}
-        <div className="navbar-actions d-none d-md-flex">
-          <button className="contact-btn">Let’s talk</button>
-
-          <div className="lang-switch">
-            <Image src="/flag.png" width={16} height={12} alt="flag" />
-            <span>EN</span>
+            <a className="nav-item-link" href="#">Portfolio</a>
+            <a className="nav-item-link" href="#">About us</a>
           </div>
 
-          <Image src="/Frame 111.png" width={16} height={12} alt="menu" />
+          {/* This section now shows inside the menu on mobile AND on the right on desktop */}
+          <div className="navbar-actions">
+            <button className="contact-btn">Let’s talk</button>
+
+            <div className="lang-switch">
+              <Image src="/flag.png" width={16} height={12} alt="flag" />
+              <span>EN</span>
+            </div>
+
+            <Image src="/Frame 111.png" width={16} height={12} alt="menu" />
+          </div>
         </div>
       </nav>
     </header>
